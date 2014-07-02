@@ -32,7 +32,7 @@ class SignPresenter extends BasePresenter {
 	return $form;
     }
 
-    public function signInFormSucceeded($form, $values) {
+    public function signInFormSucceeded($form) {
 	$values = $form->getValues();
 	if ($values->remember) {
 	    $this->getUser()->setExpiration('14 days', FALSE);
@@ -78,6 +78,8 @@ class SignPresenter extends BasePresenter {
 	    $this->redirect('this');
 	}
 
+	$values->password= \Nette\Security\Passwords::hash($values->password);
+	
 	$user = array(
 	    'firstname' => $values->firstname,
 	    'lastname' => $values->lastname,
@@ -89,8 +91,7 @@ class SignPresenter extends BasePresenter {
 
 	try {
 
-	    $registrationModel = $this->getContext()->getService('registrationModel');
-	    $registrationModel->userRegistration($user);
+	    $registrationModel = $this->getContext()->getService('registrationModel'); /* @var $registrationModel \RegistrationModel */
 	    $nickname = $this->getContext()->getService('registrationModel')->createNickName($meno, $priezvisko);
 	    $user['username'] = $nickname;
 	    $registrationModel->userRegistration($user);
@@ -104,7 +105,7 @@ class SignPresenter extends BasePresenter {
 
     public function renderVypis() {
 	$registrationModel = $this->getContext()->getService('registrationModel'); /* @var $registrationModel \RegistrationModel */
-	$person = $registrationModel->osoby();
+	$person = $registrationModel->people();
 	$this->template->person = $person;
     }
 

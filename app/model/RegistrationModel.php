@@ -20,7 +20,7 @@ class RegistrationModel{
     }
     
     public function createNickName($first, $last) {
-	return $username = Strings::truncate($last, 5);
+	return $username = Strings::substring($first,0,1).Strings::substring($last,0,3);
     }
     
     public function people(){
