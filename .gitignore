@@ -1,2 +1,4 @@
-*
-temp
+temp\
+temp\*
+temp\cache
+temp\cache\*
