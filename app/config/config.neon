@@ -15,7 +15,12 @@ nette:
 	application:
 		errorPresenter: Error
 		mapping:
-			*: App\*Module\Presenters\*Presenter
+			*: App\*Module\*Presenter
+			
+	database:
+		dsn: 'mysql:host=localhost;dbname=bakalarka'
+		user: root
+		password:
 
 	session:
 		expiration: 14 days
@@ -25,3 +30,4 @@ services:
 	- App\Model\UserManager
 	- App\RouterFactory
 	router: @App\RouterFactory::createRouter
+	registrationModel: RegistrationModel

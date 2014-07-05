@@ -1,0 +1,17 @@
+{* Latte template *}
+
+{block content}
+<div id="table">
+    <table id="table_users">
+	<th>Meno</th>
+	<th>Priezvisko</th>
+	<th>Email</th>
+	{foreach $person as $riadok}
+	<tr>
+	    <td>{$riadok->firstname}</td>
+	    <td>{$riadok->lastname}</td>
+	    <td>{$riadok->email}</td>
+	</tr>
+	{/foreach}
+    </table>
+</div>
