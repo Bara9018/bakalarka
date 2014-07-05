@@ -1,4 +1,9 @@
+temp
 temp\
 temp\*
 temp\cache
 temp\cache\*
+.git
+.git\*
+nbproject
+nbproject\*
