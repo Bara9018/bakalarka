@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="ApiGen 2.8.0">
+
+	<title>Class DibiDateTime | Dibi 2.2.1 API documentation</title>
+
+	<link rel="stylesheet" href="resources/style.css?3746977979">
+	<link rel="search" type="application/opensearchdescription+xml" title="Dibi 2.2.1 API documentation" href="http://api.nette.org/2.0/opensearch.xml">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li><a href="namespace-Dibi.html">Dibi<span></span></a>
+						<ul>
+				<li><a href="namespace-Dibi.Bridges.html">Bridges<span></span></a>
+						<ul>
+				<li><a href="namespace-Dibi.Bridges.Nette.html">Nette</a>
+						</li>
+				<li><a href="namespace-Dibi.Bridges.Tracy.html">Tracy</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="active"><a href="namespace-none.html">none</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="dibi.html">dibi</a></li>
+				<li><a href="DibiColumnInfo.html">DibiColumnInfo</a></li>
+				<li><a href="DibiConnection.html">DibiConnection</a></li>
+				<li><a href="DibiDatabaseInfo.html">DibiDatabaseInfo</a></li>
+				<li><a href="DibiDataSource.html">DibiDataSource</a></li>
+				<li class="active"><a href="DibiDateTime.html">DibiDateTime</a></li>
+				<li><a href="DibiEvent.html">DibiEvent</a></li>
+				<li><a href="DibiFileLogger.html">DibiFileLogger</a></li>
+				<li><a href="DibiFirebirdDriver.html">DibiFirebirdDriver</a></li>
+				<li><a href="DibiFirePhpLogger.html">DibiFirePhpLogger</a></li>
+				<li><a href="DibiFluent.html">DibiFluent</a></li>
+				<li><a href="DibiForeignKeyInfo.html">DibiForeignKeyInfo</a></li>
+				<li><a href="DibiIndexInfo.html">DibiIndexInfo</a></li>
+				<li><a href="DibiLiteral.html">DibiLiteral</a></li>
+				<li><a href="DibiMsSql2005Driver.html">DibiMsSql2005Driver</a></li>
+				<li><a href="DibiMsSqlDriver.html">DibiMsSqlDriver</a></li>
+				<li><a href="DibiMySqlDriver.html">DibiMySqlDriver</a></li>
+				<li><a href="DibiMySqliDriver.html">DibiMySqliDriver</a></li>
+				<li><a href="DibiNette20Extension.html">DibiNette20Extension</a></li>
+				<li><a href="DibiNette21Extension.html">DibiNette21Extension</a></li>
+				<li><a href="DibiNettePanel.html">DibiNettePanel</a></li>
+				<li><a href="DibiObject.html">DibiObject</a></li>
+				<li><a href="DibiOdbcDriver.html">DibiOdbcDriver</a></li>
+				<li><a href="DibiOracleDriver.html">DibiOracleDriver</a></li>
+				<li><a href="DibiPdoDriver.html">DibiPdoDriver</a></li>
+				<li><a href="DibiPostgreDriver.html">DibiPostgreDriver</a></li>
+				<li><a href="DibiResult.html">DibiResult</a></li>
+				<li><a href="DibiResultInfo.html">DibiResultInfo</a></li>
+				<li><a href="DibiResultIterator.html">DibiResultIterator</a></li>
+				<li><a href="DibiRow.html">DibiRow</a></li>
+				<li><a href="DibiSqlite3Driver.html">DibiSqlite3Driver</a></li>
+				<li><a href="DibiSqliteDriver.html">DibiSqliteDriver</a></li>
+				<li><a href="DibiTableInfo.html">DibiTableInfo</a></li>
+				<li><a href="DibiTranslator.html">DibiTranslator</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="IDataSource.html">IDataSource</a></li>
+				<li><a href="IDibiDriver.html">IDibiDriver</a></li>
+				<li><a href="IDibiReflector.html">IDibiReflector</a></li>
+				<li><a href="IDibiResultDriver.html">IDibiResultDriver</a></li>
+			</ul>
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="DibiDriverException.html">DibiDriverException</a></li>
+				<li><a href="DibiException.html">DibiException</a></li>
+				<li><a href="DibiNotImplementedException.html">DibiNotImplementedException</a></li>
+				<li><a href="DibiNotSupportedException.html">DibiNotSupportedException</a></li>
+				<li><a href="DibiPcreException.html">DibiPcreException</a></li>
+				<li><a href="DibiProcedureException.html">DibiProcedureException</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form action="http://www.google.com/cse" id="search">
+		<input type="hidden" name="cx" value="011549293477758430224:vxofa9ufnhc">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text">
+		<input type="submit" value="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-none.html" title="Summary of none"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="deprecated.html" title="List of deprecated elements"><span>Deprecated</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class DibiDateTime</h1>
+
+
+	<div class="description">
+	
+<p>DateTime with serialization and timestamp support for PHP 5.2.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="DateTime.html"><span>DateTime</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>DibiDateTime</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> dibi<br>
+
+				<b>Author:</b>
+				David Grudl<br>
+		<b>Located at</b> <a href="source-libs.DibiDateTime.php.html#9-89" title="Go to source code">libs/DibiDateTime.php</a><br>
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#18-28" title="Go to source code">__construct</a>( <span> <var>$time</var> = <span class="php-quote">'now'</span></span>, <span><code><a href="DateTimeZone.html">DateTimeZone</a></code> <var>$timezone</var> = <span class="php-keyword1">NULL</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="DateTime.html#___construct">DateTime::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="modifyClone" id="_modifyClone">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_modifyClone">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#31-35" title="Go to source code">modifyClone</a>( <span> <var>$modify</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="modify" id="_modify">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_modify">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#38-42" title="Go to source code">modify</a>( <span> <var>$modify</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="DateTime.html#_modify">DateTime::modify()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setTimestamp" id="_setTimestamp">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setTimestamp">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#45-51" title="Go to source code">setTimestamp</a>( <span> <var>$timestamp</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="DateTime.html#_setTimestamp">DateTime::setTimestamp()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTimestamp" id="_getTimestamp">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTimestamp">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#54-58" title="Go to source code">getTimestamp</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="DateTime.html#_getTimestamp">DateTime::getTimestamp()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#61-64" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__sleep" id="___sleep">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___sleep">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#67-76" title="Go to source code">__sleep</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__wakeup" id="___wakeup">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___wakeup">#</a>
+		<code><a href="source-libs.DibiDateTime.php.html#79-87" title="Go to source code">__wakeup</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="DateTime.html#___wakeup">DateTime::__wakeup()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="DateTime.html#methods">DateTime</a></caption>
+	<tr>
+		<td><code>
+			<a href="DateTime.html#___set_state">__set_state()</a>, 
+			<a href="DateTime.html#_add">add()</a>, 
+			<a href="DateTime.html#_createFromFormat">createFromFormat()</a>, 
+			<a href="DateTime.html#_diff">diff()</a>, 
+			<a href="DateTime.html#_format">format()</a>, 
+			<a href="DateTime.html#_getLastErrors">getLastErrors()</a>, 
+			<a href="DateTime.html#_getOffset">getOffset()</a>, 
+			<a href="DateTime.html#_getTimezone">getTimezone()</a>, 
+			<a href="DateTime.html#_setDate">setDate()</a>, 
+			<a href="DateTime.html#_setISODate">setISODate()</a>, 
+			<a href="DateTime.html#_setTime">setTime()</a>, 
+			<a href="DateTime.html#_setTimezone">setTimezone()</a>, 
+			<a href="DateTime.html#_sub">sub()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="DateTime.html#constants">DateTime</a></caption>
+	<tr>
+		<td><code>
+			<a href="DateTime.html#ATOM"><b>ATOM</b></a>, 
+			<a href="DateTime.html#COOKIE"><b>COOKIE</b></a>, 
+			<a href="DateTime.html#ISO8601"><b>ISO8601</b></a>, 
+			<a href="DateTime.html#RFC1036"><b>RFC1036</b></a>, 
+			<a href="DateTime.html#RFC1123"><b>RFC1123</b></a>, 
+			<a href="DateTime.html#RFC2822"><b>RFC2822</b></a>, 
+			<a href="DateTime.html#RFC3339"><b>RFC3339</b></a>, 
+			<a href="DateTime.html#RFC822"><b>RFC822</b></a>, 
+			<a href="DateTime.html#RFC850"><b>RFC850</b></a>, 
+			<a href="DateTime.html#RSS"><b>RSS</b></a>, 
+			<a href="DateTime.html#W3C"><b>W3C</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Dibi 2.2.1 API documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?2641695619"></script>
+<script src="elementlist.js?2435478621"></script>
+</body>
+</html>
