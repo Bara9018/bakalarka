@@ -12,10 +12,15 @@ $configurator->setTempDirectory(__DIR__ . '/../temp');
 $configurator->createRobotLoader()
 	->addDirectory(__DIR__)
 	->addDirectory(__DIR__ . '/../vendor/others')
+	->addDirectory(__DIR__ . '/../vendor/dibi')
 	->register();
 
 $configurator->addConfig(__DIR__ . '/config/config.neon');
 //$configurator->addConfig(__DIR__ . '/config/config.local.neon');
+
+$configurator->onCompile[] = function ($configurator, $compiler) {
+    $compiler->addExtension('dibi', new DibiNette21Extension());
+};
 
 $container = $configurator->createContainer();
 

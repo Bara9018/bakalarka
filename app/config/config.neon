@@ -16,18 +16,20 @@ nette:
 		errorPresenter: Error
 		mapping:
 			*: App\*Module\*Presenter
-			
-	database:
-		dsn: 'mysql:host=localhost;dbname=bakalarka'
-		user: root
-		password:
 
 	session:
 		expiration: 14 days
 
+dibi:
+	host: localhost
+	username: root
+	password:
+	database: bakalarka
+	lazy: TRUE
+
 
 services:
-	- App\Model\UserManager
-	- App\RouterFactory
-	router: @App\RouterFactory::createRouter
-	registrationModel: RegistrationModel
+		- App\Model\UserManager
+		- App\RouterFactory
+		router: @App\RouterFactory::createRouter
+		registrationModel: RegistrationModel

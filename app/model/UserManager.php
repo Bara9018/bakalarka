@@ -20,11 +20,11 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		COLUMN_ROLE = 'role';
 
 
-	/** @var Nette\Database\Context */
+	/** @var \DibiConnection */
 	private $database;
 
 
-	public function __construct(Nette\Database\Context $database)
+	public function __construct(\DibiConnection $database)
 	{
 		$this->database = $database;
 	}
@@ -39,7 +39,8 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	{
 		list($username, $password) = $credentials;
 
-		$row = $this->database->table('users')->where('username', $username)->fetch();
+//		$row = $this->database->table('users')->where('username', $username)->fetch();
+		$row = $this->database->select('*')->from('users')->where(array('username' => $username))->fetch();
 
 		if (!$row) {
 			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
