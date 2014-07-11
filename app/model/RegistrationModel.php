@@ -11,7 +11,7 @@ use Nette\Utils\Strings;
 class RegistrationModel{
     private $database;
     
-    public function __construct(\Nette\Database\Context $db) {
+    public function __construct(DibiConnection $db) {
 	$this->database = $db;
     }
     
