@@ -1,34 +1,47 @@
 {**
  * @param string   $basePath web base path
  * @param array    $flashes  flash messages
- *}
+*}
 
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
 	<meta charset="utf-8">
 
 	<title>{ifset #title}{include title|striptags} | {/ifset}Nette Sandbox</title>
 
+	<link rel="stylesheet" href="{$basePath}/www/css/bootstrap.min.css">
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/www/css/screen.css">
 	<link rel="stylesheet" media="print" href="{$basePath}/www/css/print.css">
-	<link rel="stylesheet" href="{$basePath}/www/css/bootstrap.min.css">
 	<link rel="shortcut icon" href="{$basePath}/www/favicon.ico">
 	{block head}{/block}
-</head>
+    </head>
 
-<body>
-	<script> document.documentElement.className+=' js' </script>
-
-	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-
-	{include content}
-
+    <body>
+	<script> document.documentElement.className += ' js'</script>
+	<div id="page">
+	    <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+	    <header>
+		<div id="image_logo">
+		    <img src="{$basePath}/www/img/logo.png">
+		</div>
+		{include content}
+		<div id="nav_menu">
+		    <ul class="nav nav-pills">
+			<li class="active"><a href="#">O firme</a></li>
+			<li><a href="#">Certifikáty</a></li>
+			<li><a href="#">Strojárenská výroba</a></li>
+			<li><a href="#">Výrobné kapacity</a></li>
+		    </ul>
+		</div>
+		
+	    </header>
+	</div>
 	{block scripts}
 	<script src="{$basePath}/www/js/jquery.js"></script>
 	<script src="{$basePath}/www/js/netteForms.js"></script>
 	<script src="{$basePath}/www/js/main.js"></script>
 	<script src="{$basePath}/www/js/bootstrap.min.js"></script>
 	{/block}
-</body>
+    </body>
 </html>

@@ -52,3 +52,48 @@ form .error {
 html.js .jshidden {
 	display: none;
 }
+
+header{
+    width: 100%;
+    height: 163px;
+}
+
+#page{
+    background: #CCC;
+    width: 900px;
+    height: 100%;
+    position: relative;
+    margin: auto;
+    top: 30px;
+}
+
+#nav_menu{
+    height: 40px;
+    padding-left: 220px;
+    padding-top: 110px;
+}
+
+#nav_menu ul{
+    height: 40px;
+}
+
+#nav_menu ul li{
+    //position: relative;
+    display: inline-block;
+    padding-right: 50px;
+    //left: 300px;
+    float: left;
+}
+
+#image_logo{
+    float: left;
+    margin: 20px;
+}
+
+.row{
+    padding-top: 10px;
+}
+
+.row:after{
+    display: inline-block;
+}
