@@ -2,9 +2,15 @@
 
 {block content}
 {form signInForm}
-    {input username}
-    {input password}
-    {input remember}
-    {input send}
+    <div id="form-inline">
+	    {input username}
+	    {input password}
+	    <div class="checkbox">
+		{input remember}
+	    </div>
+	    <div class="btn btn-primary">
+		{input send}
+	    </div>
+    </div>
 {/form signInForm}
 {/block}

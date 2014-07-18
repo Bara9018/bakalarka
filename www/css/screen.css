@@ -69,7 +69,7 @@ header{
 
 #nav_menu{
     height: 40px;
-    padding-left: 220px;
+    padding-left: 260px;
     padding-top: 110px;
 }
 
@@ -85,6 +85,10 @@ header{
     float: left;
 }
 
+#nav_menu ul li:last-child{
+    padding-right: 5px;
+}
+
 #image_logo{
     float: left;
     margin: 20px;
@@ -95,5 +99,22 @@ header{
 }
 
 .row:after{
+    display: inline-block;
+}
+
+#sign{
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#info{
+    float: right;
+    padding-right: 30px;
+}
+
+#send{
+    float: right;
+    padding-right: 40px;
     display: inline-block;
 }

@@ -23,7 +23,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	$form->addPassword('password', 'Password:')
 		->setRequired('Please enter your password.');
 
-	$form->addCheckbox('remember');
+	$form->addCheckbox('remember','Remember me');
 
 	$form->addSubmit('send', 'Sign in');
 
