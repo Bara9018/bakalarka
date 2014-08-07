@@ -16,7 +16,9 @@ class RegistrationModel{
     }
     
     public function UserRegistration($data){
-	$this->database->table('users')->insert($data);
+	//$this->database->table('users')->insert($data);
+	$comm=dibi::insert('users', $data);
+	$comm->execute();
     }
     
     public function createNickName($first, $last) {

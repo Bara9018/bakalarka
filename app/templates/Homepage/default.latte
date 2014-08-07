@@ -2,15 +2,17 @@
 
 {block content}
 {form signInForm}
-    <div id="form-inline">
-	    {input username}
+    <div>
+	<div class="sForm">
+	    {input username class=>"sr-only"}
 	    {input password}
-	    <div class="checkbox">
-		{input remember}
-	    </div>
-	    <div class="btn btn-primary">
-		{input send}
-	    </div>
+	</div>
+	<div class="sButton">
+	    {input send class=>"btn btn-primary"}
+	</div>
+	<div class="sCheck">
+	    {input remember class=>"checkbox"}
+	</div>
     </div>
 {/form signInForm}
 {/block}
