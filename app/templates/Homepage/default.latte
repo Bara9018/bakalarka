@@ -1,15 +1,18 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-<div class="btn-group">
-    <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-    <ul class="dropdown-menu">
-	<li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-	<li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-	<li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-	<li class="divider"></li>
-	<li><a href="#"><i class="i"></i> Make admin</a></li>
-    </ul>
-</div>
+{form signInForm}
+    <div>
+	<div class="sForm">
+	    {input username class=>"sr-only"}
+	    {input password}
+	</div>
+	<div class="sButton">
+	    {input send class=>"btn btn-primary"}
+	</div>
+	<div class="sCheck">
+	    {input remember class=>"checkbox"}
+	</div>
+    </div>
+{/form signInForm}
 {/block}
