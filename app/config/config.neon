@@ -25,11 +25,16 @@ dibi:
 	username: root
 	password:
 	database: bakalarka
-	lazy: TRUE
+	lazy: TRUE	
 
 
 services:
-		- App\Model\UserManager
-		- App\RouterFactory
-		router: @App\RouterFactory::createRouter
-		registrationModel: RegistrationModel
+	- App\Model\UserManager
+	- App\RouterFactory
+	router: @App\RouterFactory::createRouter
+	RegistrationModel:
+		class: \RegistrationModel
+	Authenticator:
+		class: \Authenticator
+	MaterialModel:
+		class: \Material

@@ -6,44 +6,78 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<meta charset="utf-8">
+		<meta charset="utf-8">
 
-	<title>{ifset #title}{include title|striptags} | {/ifset}Nette Sandbox</title>
+		<title>{ifset #title}{include title|striptags} | {/ifset}Nette Sandbox</title>
 
-	<link rel="stylesheet" href="{$basePath}/www/css/bootstrap.min.css">
-	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/www/css/screen.css">
-	<link rel="stylesheet" media="print" href="{$basePath}/www/css/print.css">
-	<link rel="shortcut icon" href="{$basePath}/www/favicon.ico">
-	{block head}{/block}
+		<link rel="stylesheet" href="{$basePath}/www/css/bootstrap.min.css">
+		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/www/css/screen.css">
+		<link rel="stylesheet" media="print" href="{$basePath}/www/css/print.css">
+		<link rel="shortcut icon" href="{$basePath}/www/favicon.ico">
+		{block head}{/block}
     </head>
 
     <body>
-	<script> document.documentElement.className += ' js'</script>
-	<div id="page">
-	    <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-	    <header>
-		<div id="image_logo">
-		    <img src="{$basePath}/www/img/logo.png">
+		<script> document.documentElement.className += ' js'</script>
+		<div id="page">
+			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+			<header>
+				<div id="image_logo">
+					<img src="{$basePath}/www/img/logo.png">
+				</div>
+				<div>
+					{if $user->isLoggedIn()}
+						Uzivatel: {$user->getIdentity()->email}
+						{form logOutForm}
+							{input logout class=>"btn btn-primary"}
+						{/form}
+					{else}
+						{form signInForm}
+							<div class="sForm">
+								{input username class=>"sr-only"}
+								{input password}
+							</div>
+							<div class="sButton">
+								{input send class=>"btn btn-primary"}
+							</div>
+							<div class="sCheck">
+								{input remember class=>"checkbox"}
+							</div>
+						{/form signInForm}
+					{/if}
+				</div>
+					{if $user->isInRole('admin')}
+						<div id="nav_menu">
+						<ul class="nav nav-pills">
+							<li class="active"><a href='Material'>Materiál</a></li>
+							<li><a href="#">Vozidlá</a></li>
+							<li><a href="#">Školenia</a></li>
+							<li><a href="#">Kontroly</a></li>
+							<li><a href="#">Poruchy</a></li>
+						</ul>
+					</div>	
+					{else}
+					<div id="nav_menu">
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#">O firme</a></li>
+							<li><a href="#">Certifikáty</a></li>
+							<li><a href="#">Strojárenská výroba</a></li>
+							<li><a href="#">Výrobné kapacity</a></li>
+						</ul>
+					</div>	
+				{/if}
+					{include content}
+			</header>
+			<section>
+				<h3>PL-profy</h3>
+
+			</section>
 		</div>
-		{include content}
-		<div id="nav_menu">
-		    <ul class="nav nav-pills">
-			<li class="active"><a href="#">O firme</a></li>
-			<li><a href="#">Certifikáty</a></li>
-			<li><a href="#">Strojárenská výroba</a></li>
-			<li><a href="#">Výrobné kapacity</a></li>
-		    </ul>
-		</div>		
-	    </header>
-	    <section>
-		<h3>PL-profy</h3>
-	    </section>
-	</div>
-	{block scripts}
-	<script src="{$basePath}/www/js/jquery.js"></script>
-	<script src="{$basePath}/www/js/netteForms.js"></script>
-	<script src="{$basePath}/www/js/main.js"></script>
-	<script src="{$basePath}/www/js/bootstrap.min.js"></script>
-	{/block}
+		{block scripts}
+		<script src="{$basePath}/www/js/jquery.js"></script>
+		<script src="{$basePath}/www/js/netteForms.js"></script>
+		<script src="{$basePath}/www/js/main.js"></script>
+		<script src="{$basePath}/www/js/bootstrap.min.js"></script>
+		{/block}
     </body>
 </html>

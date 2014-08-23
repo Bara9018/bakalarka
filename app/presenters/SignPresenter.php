@@ -9,7 +9,7 @@ use Nette\Forms\Form;
 /**
  * Sign in/out presenters.
  */
-class SignPresenter extends BasePresenter {
+class SignPresenter extends SecurePresenter {
 
     public function createComponentRegistrationForm() {
 	$form = new Nette\Application\UI\Form();
@@ -20,6 +20,8 @@ class SignPresenter extends BasePresenter {
 	$form->addText('email', 'E-mail')
 		->setRequired('E-mail je povinný')
 		->addRule(\Nette\Application\UI\Form::EMAIL, 'Neplatná emailová adresa');
+	$form->addText('role','Rola')
+			->setRequired('Rola je povinná');
 	$form->addPassword('password', 'Heslo:')
 		->setRequired('Zadajte heslo');
 	$form->addPassword('passwordConfirm', 'Potvrdenie hesla:')
@@ -47,6 +49,7 @@ class SignPresenter extends BasePresenter {
 	    'firstname' => $values->firstname,
 	    'lastname' => $values->lastname,
 	    'email' => $values->email,
+		'role'=>$values->role,
 	    'password' => $values->password
 	);
 	$meno = $values->firstname;
@@ -54,10 +57,10 @@ class SignPresenter extends BasePresenter {
 
 	try {
 
-	    $registrationModel = $this->getContext()->getService('registrationModel'); /* @var $registrationModel \RegistrationModel */
-	    $nickname = $this->getContext()->getService('registrationModel')->createNickName($meno, $priezvisko);
+	    $registrationModel = $this->context->RegistrationModel; /* @var $registrationModel \RegistrationModel */
+	    $nickname = $registrationModel->createNickName($meno, $priezvisko);
 	    $user['username'] = $nickname;
-	    $registrationModel->userRegistration($user);
+	    $newUser = $registrationModel->userRegistration($user);
 	} catch (Exception $e) {
 	    $this->flashMessage('Vyskytla sa chyba: ' . $e->getMessage());
 	    $this->redirect('this');
@@ -70,12 +73,6 @@ class SignPresenter extends BasePresenter {
 	$registrationModel = $this->getContext()->getService('registrationModel'); /* @var $registrationModel \RegistrationModel */
 	$person = $registrationModel->people();
 	$this->template->person = $person;
-    }
-
-    public function actionOut() {
-	$this->getUser()->logout();
-	$this->flashMessage('You have been signed out.');
-	$this->redirect('in');
     }
 
 }
