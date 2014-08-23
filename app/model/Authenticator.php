@@ -18,11 +18,15 @@ class Authenticator extends \Nette\Security\Permission {
 		$this->addResource('Material:add');
 		$this->addResource('Material:printmaterial');
 		$this->addResource('Material:detail');
+		$this->addResource('Cars:default');
+		$this->addResource('Cars:add');
 		
 		$this->allow('admin','Sign:registration');
 		$this->allow('admin','Material:default');
 		$this->allow('admin','Material:add');
 		$this->allow('admin','Material:printmaterial');
 		$this->allow('admin','Material:detail');
+		$this->allow('admin','Cars:default');
+		$this->allow('admin','Cars:add');
 	}
 }
