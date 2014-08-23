@@ -60,8 +60,20 @@ class MaterialPresenter extends SecurePresenter{
 		} catch (Exception $e) {
 			$this->flashMessage($e->getMessage());
 		}
-		$this->flashMessage('OK');
+//		$this->flashMessage('OK');
 		$this->redirect('Material:');
+	}
+	
+	public function renderPrintmaterial(){
+		$materialModel=  $this->context->MaterialModel;	/* @var $materialModel \MaterialModel */
+		$list=  $materialModel->MaterialPrint();
+		$this->template->list=$list;
+	}
+	
+	public function renderDetail(){
+		$materialModel=  $this->context->MaterialModel;	/* @var $materialModel \MaterialModel */
+		$list=  $materialModel->MaterialPrint();
+		$this->template->list=$list;
 	}
 
 }

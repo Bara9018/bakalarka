@@ -47,11 +47,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 
 		try {
 			$this->getUser()->login($values->username, $values->password);
-			if ($this->getUser()->isLoggedIn()) {
-				$this->flashMessage('Si prihlaseny');
-			} else {
-				$this->flashMessage('Nie si prihlaseny');
-			}
+//			if ($this->getUser()->isLoggedIn()) {
+//				$this->flashMessage('Si prihlaseny');
+//			} else {
+//				$this->flashMessage('Nie si prihlaseny');
+//			}
 		} catch (Nette\Security\AuthenticationException $e) {
 			$this->flashMessage($e->getMessage());
 		}

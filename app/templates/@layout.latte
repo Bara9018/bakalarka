@@ -27,10 +27,14 @@
 				</div>
 				<div>
 					{if $user->isLoggedIn()}
-						Uzivatel: {$user->getIdentity()->email}
-						{form logOutForm}
-							{input logout class=>"btn btn-primary"}
-						{/form}
+						<div id='uzivatel'>
+							<h5>Uzivatel:</h5> <small>{$user->getIdentity()->email}</small>
+							<div id='log_out'>
+								{form logOutForm}
+									{input logout class=>"btn btn-primary"}
+								{/form}
+							</div>
+						</div>
 					{else}
 						{form signInForm}
 							<div class="sForm">
@@ -46,8 +50,8 @@
 						{/form signInForm}
 					{/if}
 				</div>
-					{if $user->isInRole('admin')}
-						<div id="nav_menu">
+				{if $user->isInRole('admin')}
+					<div id="nav_menu">
 						<ul class="nav nav-pills">
 							<li class="active"><a href='Material'>Materiál</a></li>
 							<li><a href="#">Vozidlá</a></li>
@@ -56,7 +60,8 @@
 							<li><a href="#">Poruchy</a></li>
 						</ul>
 					</div>	
-					{else}
+
+				{else}
 					<div id="nav_menu">
 						<ul class="nav nav-pills">
 							<li class="active"><a href="#">O firme</a></li>
@@ -66,10 +71,19 @@
 						</ul>
 					</div>	
 				{/if}
-					{include content}
 			</header>
 			<section>
-				<h3>PL-profy</h3>
+				{if $user->isInRole('admin')}
+					<div id="addMaterial">
+						<div id='second_menu'>
+							<ul class="nav nav-pills nav-stacked">
+								<li class="active"><a href='add'>Pridať materiál</a></li>
+								<li class="active"><a href='printmaterial'>Zoznam materiálu</a></li>
+							</ul>
+						</div>
+					</div>
+				{/if}
+				{include content}
 
 			</section>
 		</div>

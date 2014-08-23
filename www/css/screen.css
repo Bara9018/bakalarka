@@ -74,7 +74,7 @@ header{
 }
 
 #nav_menu ul{
-    height: 40px;
+    height: 30px;
     margin-top: 13px;
 }
 
@@ -155,4 +155,51 @@ section h3{
 
 #registracia{
 	float: inside;
+}
+
+#second_menu{
+	width: 170px;
+}
+
+#saveMaterial{
+	position: absolute;
+	left: 180px;
+}
+
+#uzivatel small{
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+#uzivatel h5{
+	position: absolute;
+	right: 240px;
+}
+
+#log_out{
+	position:absolute;
+	top:30px;
+	right: 20px;
+}
+
+#printTable{
+	position: relative;
+	left: 200px;
+}
+
+#printTable th{
+	width: 100px;
+	border: 1px solid white;
+	text-align: center;
+}
+
+#printTable td{
+	border: 1px solid white;
+	width: 100px;
+	text-align: center;
+}
+
+#addMaterial{
+	width: 200px;
 }

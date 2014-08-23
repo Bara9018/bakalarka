@@ -22,4 +22,8 @@ class Material {
 		$result = $this->database->insert('material', $data);
 		return $result->execute();
 	}
+	
+	public function MaterialPrint(){
+		return $this->database->select('* from material');
+	}
 }
