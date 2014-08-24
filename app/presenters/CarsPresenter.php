@@ -50,4 +50,55 @@ class CarsPresenter extends SecurePresenter{
 //		$this->flashMessage('OK');
 		$this->redirect('Cars:');
 	}
+	
+	public function renderPrintCars(){
+		$carsModel= $this->context->CarsModel; /* @var $carsModel \CarsModel */
+		$list=$carsModel->CarsPrint();
+		$this->template->list=$list;
+	}
+	
+	public function renderDetail(){
+		$carsModel= $this->context->CarsModel; /* @var $carsModel \CarsModel */
+		$list=$carsModel->CarsPrint();
+		$this->template->list=$list;
+	}
+	
+	protected function createComponentAddFaultForm(){
+		$form = new Nette\Application\UI\Form();
+		
+		$form->addText('description','Popis');
+		$form->addText('parts','Náhradné diely');
+		$form->addText('service','Servis');
+		$form->addText('sum','Suma');
+		$form->addSubmit('submit', 'Uložiť');
+
+		$form->onSuccess[] = $this->addFaultSucceeded;
+		return $form;
+	}
+	
+	public function addFaultSucceeded($form){
+		$values=$form->getValues();
+		
+		$fault=array(
+			'description'=>$values->description,
+			'parts'=>$values->parts,
+			'service'=>$values->service,
+			'sum'=>$values->sum
+		);
+		
+		try {
+			$faultModel=  $this->context->FaultModel; /* @var $faultModel \FaultModel */
+			$newFault=$faultModel->addfault($fault);
+		} catch (Exception $e) {
+			$this->flashMessage($e->getMessage());
+		}
+//		$this->flashMessage('OK');
+		$this->redirect('Cars:detail');
+	}
+	
+	public function renderFaultDetail(){
+		$faultModel= $this->context->FaultModel; /* @var $carsModel \CarsModel */
+		$list=$faultModel->FaultPrint();
+		$this->template->list=$list;
+	}
 }

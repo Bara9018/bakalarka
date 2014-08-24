@@ -7,23 +7,23 @@
  */
 
 /**
- * Description of CarsModel
+ * Description of FaultModel
  *
  * @author Barbora
  */
-class CarsModel {
+class FaultModel {
 	private $database;
 	
 	public function __construct(DibiConnection $db) {
 		$this->database=$db;
 	}
 	
-	public function addCar($data){
-		$result = $this->database->insert('cars', $data);
+	public function addFault($data){
+		$result = $this->database->insert('fault', $data);
 		return $result->execute();
 	}
 	
-	public function CarsPrint(){
-		return $this->database->select('* from cars');
+	public function FaultPrint(){
+		return $this->database->select('* from fault');
 	}
 }

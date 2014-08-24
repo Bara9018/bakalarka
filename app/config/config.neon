@@ -40,3 +40,5 @@ services:
 		class: \Material
 	CarsModel:
 		class: \CarsModel
+	FaultModel:
+		class: \FaultModel
