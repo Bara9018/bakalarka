@@ -38,3 +38,7 @@ services:
 		class: \Authenticator
 	MaterialModel:
 		class: \Material
+	CarsModel:
+		class: \CarsModel
+	FaultModel:
+		class: \FaultModel

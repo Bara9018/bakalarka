@@ -1,0 +1,24 @@
+{* Latte template *}
+
+{block content}
+<div id='printTable'>
+	<table>
+		<th>Popis</th>
+		<th>Nahradne diely</th>
+		<th>Servis</th>
+		<th>Suma</th>
+	</table>
+</div>
+{foreach $list as $riadok}
+	<div id='printTable'>
+		<table>
+			<tr>
+				<td>{$riadok->description}</td>
+				<td>{$riadok->parts}</td>
+				<td>{$riadok->service}</td>
+				<td>{$riadok->sum}</td>
+			
+			</tr>
+		</table>
+	</div>
+{/foreach}

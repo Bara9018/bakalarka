@@ -1,0 +1,22 @@
+{* Latte template *}
+
+{block content}
+<div id='printTable'>
+<h4>Zoznam aut</h4>
+	<table>
+		<th>Špz</th>
+		<th>Nosnosť</th>
+		<th>Detail</th>
+	</table>
+</div>
+{foreach $list as $riadok}
+	<div id='printTable'>
+		<table>
+			<tr>
+				<td>{$riadok->spz}</td>
+				<td>{$riadok->capacity}</td>
+				<td><a href='detail'>Detail</a></td>
+			</tr>
+		</table>
+	</div>
+{/foreach}

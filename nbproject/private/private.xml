@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/@layout.latte</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/SignPresenter.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/model/MaterialModel.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/model/Authenticator.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/www/css/screen.css</file>
             <file>file:/C:/xampp/htdocs/bakalarka/app/config/config.neon</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/model/RegistrationModel.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/CarsPresenter.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Material/add.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/MaterialPresenter.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/model/CarsModel.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Cars/add.latte</file>
         </group>
     </open-files>
 </project-private>
