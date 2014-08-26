@@ -23,7 +23,7 @@ class FaultModel {
 		return $result->execute();
 	}
 	
-	public function FaultPrint(){
-		return $this->database->select('* from fault');
+	public function FaultPrint($spz){
+		return $this->database->select('*')->from('fault')->where('spz = %s', $spz);
 	}
 }

@@ -1,0 +1,11 @@
+
+<ul class="nav nav-pills nav-justified">
+	<li{ifCurrent Homepage:default} class="active"{/ifCurrent}><a href="{$presenter->link("Homepage:default")}">Hlavní stránka</a></li> 
+	{foreach $config['groups'] as $group}
+		{ifCurrent $group['target'].":*"}
+			<li class="active"><a href="{$presenter->link($group['target'].":default")}">{$group['text']}</a></li>
+		{else}
+			<li><a href="{$presenter->link($group['target'].":default")}">{$group['text']}</a></li>
+		{/ifCurrent}
+	{/foreach}
+</ul>

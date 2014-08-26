@@ -2,8 +2,9 @@
 
 {block content}
 <div id='printTable'>
-<h4>Zoznam materiálu</h4>
+	<h4>Zoznam materiálu</h4>
 	<table>
+		<th>Id</th>
 		<th>Názov</th>
 		<th>Množstvo</th>
 		<th>Detail</th>
@@ -13,9 +14,10 @@
 	<div id='printTable'>
 		<table>
 			<tr>
+				<td>{$riadok->id}</td>
 				<td>{$riadok->name}</td>
 				<td>{$riadok->quantity}</td>
-				<td><a href='detail'>Detail</a></td>
+				<td><a n:href="material:detail $riadok->id">Detail</a></td>
 			</tr>
 		</table>
 	</div>

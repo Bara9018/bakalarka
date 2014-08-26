@@ -1,0 +1,9 @@
+<ul class="nav nav-pills nav-stacked">
+	{foreach $config['groups'] as $group}
+		{ifCurrent $group['target'].":*"}
+		{foreach $group['items'] as $item}
+			<li{ifCurrent $group['target'].":".$item['target']} class="active"{/ifCurrent}><a href="{$presenter->link($group['target'].":".$item['target'])}">{$item['text']}</a></li>
+		{/foreach}
+		{/ifCurrent}
+  {/foreach}
+</ul>

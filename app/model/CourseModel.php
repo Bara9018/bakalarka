@@ -7,27 +7,19 @@
  */
 
 /**
- * Description of Material
+ * Description of CourseModel
  *
  * @author Barbora
  */
-class Material {
+class CourseModel {
 	private $database;
 	
 	public function __construct(DibiConnection $db) {
 		$this->database=$db;
 	}
 	
-	public function addMaterial($data){
-		$result = $this->database->insert('material', $data);
+	public function addCourse($data){
+		$result = $this->database->insert('course', $data);
 		return $result->execute();
-	}
-	
-	public function MaterialPrint(){
-		return $this->database->select('* from material');
-	}
-	
-	public function DetailPrint($id){
-		return $this->database->select('*')->from('material')->where('id = %i', $id);
 	}
 }

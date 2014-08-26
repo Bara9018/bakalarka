@@ -50,39 +50,14 @@
 						{/form signInForm}
 					{/if}
 				</div>
-				{if $user->isInRole('admin')}
-					<div id="nav_menu">
-						<ul class="nav nav-pills">
-							<li class="active"><a href='Material'>Materiál</a></li>
-							<li><a href='cars'>Vozidlá</a></li>
-							<li><a href="#">Školenia</a></li>
-							<li><a href="#">Kontroly</a></li>
-							<li><a href="#">Poruchy</a></li>
-						</ul>
-					</div>	
-
-				{else}
-					<div id="nav_menu">
-						<ul class="nav nav-pills">
-							<li class="active"><a href="#">O firme</a></li>
-							<li><a href="#">Certifikáty</a></li>
-							<li><a href="#">Strojárenská výroba</a></li>
-							<li><a href="#">Výrobné kapacity</a></li>
-						</ul>
-					</div>	
-				{/if}
+				<div class="menu_main">
+					{control menu-top}
+				</div>
 			</header>
 			<section>
-				{if $user->isInRole('admin')}
-					<div id="addMaterial">
-						<div id='second_menu'>
-							<ul class="nav nav-pills nav-stacked">
-								<li class="active"><a href='add'>Pridať materiál</a></li>
-								<li class="active"><a href='printmaterial'>Zoznam materiálu</a></li>
-							</ul>
-						</div>
-					</div>
-				{/if}
+				<div class="leftMenu">
+					{control menu-left}
+				</div>
 				{include content}
 
 			</section>

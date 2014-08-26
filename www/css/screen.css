@@ -203,3 +203,20 @@ section h3{
 #addMaterial{
 	width: 200px;
 }
+
+.menu_main{
+	position: absolute;
+	height: 50px;
+	top: 120px;
+	left: 180px;
+}
+
+.leftMenu{
+	position: absolute;
+	width: 150px;
+}
+
+#course{
+	position: absolute;
+	left: 150px;
+}

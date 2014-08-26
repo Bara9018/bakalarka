@@ -1,0 +1,44 @@
+parameters:
+  menu:
+    basic:
+      name: "Hello world web"   #název vašeho webu, používán v některých layoutech
+      divider: "/"   # používán v drobečkové navigaci
+    groups:   #seskupení odkazů (většinou jeden presenter)
+      0:   #pozice v menu
+        target: "Material"   #odkazuje na HelloPresenter
+        text: "Material"   #text odkazu v menu
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať material"   #text odkazu
+          1:
+            target: "printmaterial"
+            text: "Zoznam materialu"
+          2:
+            target: "detail"
+            text: "Detail"
+      1:
+        target: "Cars"
+        text: "Vozidla"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať vozidlo"   #text odkazu
+          1:
+            target: "detail"
+            text: "Zoznam vozidiel"
+          2:
+            target: "printmaterial"
+            text: "Detail"
+      2:
+        target: "Course"
+        text: "Školenia"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať školenie"   #text odkazu
+          1:
+            target: "detail"
+            text: "Zoznam školení"
+
+      

@@ -42,3 +42,5 @@ services:
 		class: \CarsModel
 	FaultModel:
 		class: \FaultModel
+	CourseModel:
+		class: \CourseModel

@@ -70,9 +70,9 @@ class MaterialPresenter extends SecurePresenter{
 		$this->template->list=$list;
 	}
 	
-	public function renderDetail(){
+	public function renderDetail($id){
 		$materialModel=  $this->context->MaterialModel;	/* @var $materialModel \MaterialModel */
-		$list=  $materialModel->MaterialPrint();
+		$list=  $materialModel->DetailPrint($id);
 		$this->template->list=$list;
 	}
 

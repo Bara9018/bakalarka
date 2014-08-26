@@ -57,15 +57,16 @@ class CarsPresenter extends SecurePresenter{
 		$this->template->list=$list;
 	}
 	
-	public function renderDetail(){
+	public function renderDetail($spz){
 		$carsModel= $this->context->CarsModel; /* @var $carsModel \CarsModel */
-		$list=$carsModel->CarsPrint();
+		$list=$carsModel->CarsPrint($spz);
 		$this->template->list=$list;
 	}
 	
 	protected function createComponentAddFaultForm(){
 		$form = new Nette\Application\UI\Form();
 		
+		$form->addText('spz','Spz');
 		$form->addText('description','Popis');
 		$form->addText('parts','Náhradné diely');
 		$form->addText('service','Servis');
@@ -80,6 +81,7 @@ class CarsPresenter extends SecurePresenter{
 		$values=$form->getValues();
 		
 		$fault=array(
+			'spz'=>$values->spz,
 			'description'=>$values->description,
 			'parts'=>$values->parts,
 			'service'=>$values->service,
@@ -96,9 +98,9 @@ class CarsPresenter extends SecurePresenter{
 		$this->redirect('Cars:detail');
 	}
 	
-	public function renderFaultDetail(){
+	public function renderFaultDetail($spz){
 		$faultModel= $this->context->FaultModel; /* @var $carsModel \CarsModel */
-		$list=$faultModel->FaultPrint();
+		$list=$faultModel->FaultPrint($spz);
 		$this->template->list=$list;
 	}
 }
