@@ -45,4 +45,10 @@ class CoursePresenter extends SecurePresenter {
 //		$this->flashMessage('OK');
 		$this->redirect('Course:');
 	}
+	
+	public function renderDetail($id){
+		$courseModel= $this->context->CourseModel;
+		$list=$courseModel->detailPrint($id);
+		$this->template->list=$list;
+	}
 }

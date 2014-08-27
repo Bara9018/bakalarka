@@ -22,4 +22,8 @@ class CourseModel {
 		$result = $this->database->insert('course', $data);
 		return $result->execute();
 	}
+	
+	public function detailPrint($id){
+		return $this->database->select('*')->from('course')->where('id = %i',$id);
+	}
 }
