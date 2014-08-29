@@ -17,11 +17,8 @@ use Nette,
  */
 class MaterialPresenter extends SecurePresenter{
 
-//	public function beforeRender() {
-//		parent::beforeRender();
-//		$this->template->material=  $this->getMaterial();
-//	}
-	
+	private $list;
+
 	public function actionMaterial(){
 		
 	}
@@ -29,6 +26,26 @@ class MaterialPresenter extends SecurePresenter{
 	protected function createComponentSaveMaterialForm() {
 		$form = new Nette\Application\UI\Form();
 
+		$preparedData=  array(
+			'id'=>NULL,
+			'name'=>NULL,
+			'quantity'=>null,
+			'section'=>null,
+			'description'=>null,
+			'weight'=>null,
+		);
+		
+		if(is_object($this->list)){
+			$preparedData= array(
+				'id'=>$this->list->id,
+				'name'=>  $this->list->name,
+				'quantity'=>  $this->list->quantity,
+				'section'=>  $this->list->section,
+				'description'=> $this->list->description,
+				'weight'=>  $this->list->weight,
+			);
+		}
+		
 		$form->addText('id', 'id');
 		$form->addText('name', 'Nazov');
 		$form->addText('quantity', 'Množstvo');
@@ -75,5 +92,17 @@ class MaterialPresenter extends SecurePresenter{
 		$list=  $materialModel->DetailPrint($id);
 		$this->template->list=$list;
 	}
+	
+	public function actionEdit($id){
+		$materialModel=  $this->context->MaterialModel;  /* @var $materialModel \Material */
+		$list= $materialModel->DetailPrint($id);
+		if(!is_object($list)){
+			$this->flashMessage('Daný parameter neexistuje');
+			$this->redirect('Material');
+		}
+		$this->list=$list;
+		
+	}
+	
 
 }

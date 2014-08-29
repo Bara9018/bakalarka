@@ -28,6 +28,10 @@ class Material {
 	}
 	
 	public function DetailPrint($id){
-		return $this->database->select('*')->from('material')->where('id = %i', $id);
+		return $this->database->select('*')->from('material')->where('id = %i', $id)->fetch();
+	}
+	
+	public function MaterialUpdate($id,$data){
+		$this->database->update('material', $data)->where('id = %i')->execute();
 	}
 }

@@ -27,6 +27,7 @@ class Authenticator extends \Nette\Security\Permission {
 		$this->addResource('Course:add');
 		$this->addResource('Course:default');
 		$this->addResource('Course:detail');
+		$this->addResource('Material:edit');
 		
 		$this->allow('admin','Sign:registration');
 		$this->allow('admin','Material:default');
@@ -42,5 +43,6 @@ class Authenticator extends \Nette\Security\Permission {
 		$this->allow('admin','Course:add');
 		$this->allow('admin','Course:default');
 		$this->allow('admin','Course:detail');
+		$this->allow('admin','Material:edit');
 	}
 }
