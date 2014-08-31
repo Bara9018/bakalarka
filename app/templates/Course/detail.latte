@@ -1,19 +1,19 @@
 {* Latte template *}
 
 {block content}
-<div id='printTable'>
-	<table>
-		<th>Id</th>
-		<th>Názov</th>
+	<table class="table">
+		<tr>
+			<th>Názov</th>
+			<th>Detail</th>
+		</tr>
+		{foreach $list as $riadok}
+		<tr>
+			<td>{$riadok->name}</td>
+			<td><a n:href="#">Detail</a></td>
+		</tr>
+		{/foreach}
 	</table>
-</div>
-{foreach $list as $riadok}
-	<div id='printTable'>
-		<table>
-			<tr>
-				<td>{$riadok->id}</td>
-				<td>{$riadok->name}</td>
-			</tr>
-		</table>
-	</div>
-{/foreach}
+
+
+
+

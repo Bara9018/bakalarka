@@ -32,6 +32,6 @@ class Material {
 	}
 	
 	public function MaterialUpdate($id,$data){
-		$this->database->update('material', $data)->where('id = %i')->execute();
+		$this->database->update('material', $data)->where('id = %i',$id)->execute();
 	}
 }

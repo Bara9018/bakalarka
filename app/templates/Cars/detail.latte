@@ -1,25 +1,24 @@
 {* Latte template *}
 
 {block content}
-<div id='printTable'>
-	<table>
+<h3>Zoznam aut</h3>
+<table class="table">
+	<tr>
 		<th>Spz</th>
 		<th>Rok výroby</th>
 		<th>Nosnosť</th>
 		<th>Palivo</th>
 		<th>Poruchy</th>
-	</table>
-</div>
-{foreach $list as $riadok}
-	<div id='printTable'>
-		<table>
-			<tr>
-				<td>{$riadok->spz}</td>
-				<td>{$riadok->years}</td>
-				<td>{$riadok->capacity}</td>
-				<td>{$riadok->fuel}</td>
-				<td><a n:href="cars:faultdetail $riadok->spz">Poruchy</a></td>
-			</tr>
-		</table>
-	</div>
-{/foreach}
+		<th>Edit</th>
+	</tr>
+	{foreach $list as $riadok}
+		<tr>
+			<td>{$riadok->spz}</td>
+			<td>{$riadok->years}</td>
+			<td>{$riadok->capacity}</td>
+			<td>{$riadok->fuel}</td>
+			<td><a n:href="cars:faultdetail $riadok->spz">Poruchy</a></td>
+			<td><a n:href="cars:editcars $riadok->spz">Edit</a></td>
+		</tr>
+	{/foreach}
+</table>

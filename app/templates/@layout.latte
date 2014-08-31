@@ -19,8 +19,8 @@
 
     <body>
 		<script> document.documentElement.className += ' js'</script>
-		<div id="page">
 			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+		<div id="page">
 			<header>
 				<div id="image_logo">
 					<img src="{$basePath}/www/img/logo.png">
@@ -54,12 +54,11 @@
 					{control menu-top}
 				</div>
 			</header>
-			<section>
-				<div class="leftMenu">
-					{control menu-left}
-				</div>
+			<nav id="leftMenu">
+				{control menu-left}
+			</nav>
+			<section id="mainContent">
 				{include content}
-
 			</section>
 		</div>
 		{block scripts}

@@ -20,7 +20,6 @@ class CoursePresenter extends SecurePresenter {
 	protected function createComponentCourseForm(){
 		$form = new Nette\Application\UI\Form();
 		
-		$form->addText('id','id');
 		$form->addText('name','Nazov');
 		$form->addSubmit('submit', 'Uložiť');
 
@@ -32,7 +31,6 @@ class CoursePresenter extends SecurePresenter {
 		$values=$form->getValues();
 		
 		$course=array(
-			'id'=>$values->id,
 			'name'=>$values->name,	
 		);
 		
@@ -46,9 +44,13 @@ class CoursePresenter extends SecurePresenter {
 		$this->redirect('Course:');
 	}
 	
-	public function renderDetail($id){
-		$courseModel= $this->context->CourseModel;
-		$list=$courseModel->detailPrint($id);
+	public function renderDetail(){
+		$courseModel= $this->context->CourseModel;  /* @var $courseModel \CourseModel */
+		$list=$courseModel->detailPrint();
+		if (!is_object($list)) {
+			$this->flashMessage('Zadane ID neexistuje.');
+			$this->redirect('Course:');
+		}
 		$this->template->list=$list;
 	}
 }

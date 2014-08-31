@@ -28,6 +28,10 @@ class CarsModel {
 	}
 	
 	public function DetailPrint($spz){
-		return $this->database->select('*')->from('cars')->where('spz = %s', $spz);
+		return $this->database->select('*')->from('cars')->where('spz = %s', $spz)->fetch();
+	}
+	
+	public function CarsUpdate($spz,$data){
+		$this->database->update('cars', $data)->where('spz = %s',$spz)->execute();
 	}
 }
