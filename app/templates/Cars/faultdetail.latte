@@ -9,6 +9,7 @@
 		<th>Nahradne diely</th>
 		<th>Servis</th>
 		<th>Suma</th>
+		<th>Edit</th>
 	</tr>
 	{foreach $list as $riadok}
 		<tr>
@@ -17,6 +18,7 @@
 			<td>{$riadok->parts}</td>
 			<td>{$riadok->service}</td>
 			<td>{$riadok->sum}</td>
+			<td><a n:href="cars:editfault $riadok->id">Edit</a></td>
 		</tr>
 	{/foreach}
 </table>

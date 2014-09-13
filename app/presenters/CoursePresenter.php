@@ -16,11 +16,29 @@ use Nette,
  * @author Barbora
  */
 class CoursePresenter extends SecurePresenter {
+	
+	private $list;
 
 	protected function createComponentCourseForm(){
 		$form = new Nette\Application\UI\Form();
 		
-		$form->addText('name','Nazov');
+		$preparedData=array(
+			'name'=>NULL,
+			'id'=>NULL,
+			'created'=>FALSE,
+		);
+		
+		if(is_object($this->list)){
+			$preparedData=array(
+				'name'=> $this->list->name,
+				'id'=> $this->list->id,
+				'created'=> TRUE,
+			);
+		}
+		
+		$form->addText('name','Nazov')->setDefaultValue($preparedData['name']);
+		$form->addHidden('id','id')->setDefaultValue($preparedData['id']);
+		$form->addHidden('created',$preparedData['created']);
 		$form->addSubmit('submit', 'Uložiť');
 
 		$form->onSuccess[] = $this->courseFormSucceeded;
@@ -32,11 +50,16 @@ class CoursePresenter extends SecurePresenter {
 		
 		$course=array(
 			'name'=>$values->name,	
+			'id'=>$values->id,
 		);
 		
 		try {
 			$courseModel=  $this->context->CourseModel; /* @var $courseModel \CourseModel */
+			if($values->created==FALSE){
 			$newCourse=$courseModel->addCourse($course);
+			}else{
+				$newCourse=$courseModel->courseUpdate($values->id, $course);
+			}
 		} catch (Exception $e) {
 			$this->flashMessage($e->getMessage());
 		}
@@ -44,13 +67,33 @@ class CoursePresenter extends SecurePresenter {
 		$this->redirect('Course:');
 	}
 	
-	public function renderDetail(){
+	public function renderGetcourse(){
 		$courseModel= $this->context->CourseModel;  /* @var $courseModel \CourseModel */
-		$list=$courseModel->detailPrint();
+		$list=$courseModel->coursePrint();
 		if (!is_object($list)) {
 			$this->flashMessage('Zadane ID neexistuje.');
 			$this->redirect('Course:');
 		}
 		$this->template->list=$list;
+	}
+	
+	public function renderDetail($id){
+		$courseModel=  $this->context->CourseModel;  /* @var $courseModel \CourseModel */
+		$list=$courseModel->detailPrint($id);
+		if (!is_object($list)) {
+			$this->flashMessage('Zadane ID neexistuje.');
+			$this->redirect('Course:');
+		}
+		$this->template->list=$list;
+	}
+	
+	public function actionEditCourse($id){
+		$courseModel=  $this->context->CourseModel; /* @var $courseModel \CourseModel */
+		$list=$courseModel->detailPrint($id);
+		if (!is_object($list)) {
+			$this->flashMessage('Dany parameter neexistuje');
+			$this->redirect('Cars:');
+		}
+		$this->list=$list;
 	}
 }

@@ -14,6 +14,7 @@ $configurator->createRobotLoader()
 	->addDirectory(__DIR__ . '/../vendor/others')
 	->addDirectory(__DIR__ . '/../vendor/dibi')
 	->addDirectory(__DIR__ . '/../vendor/menu')
+	->addDirectory(__DIR__ . '/../vendor/Nella')
 	->register();
 
 $configurator->addConfig(__DIR__ . '/config/config.neon');

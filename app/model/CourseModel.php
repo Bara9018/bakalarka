@@ -23,7 +23,15 @@ class CourseModel {
 		return $result->execute();
 	}
 	
-	public function detailPrint(){
+	public function coursePrint(){
 		return $this->database->select('*')->from('course');
+	}
+	
+	public function detailPrint($id){
+		return $this->database->select('*')->from('course')->where('id = %i',$id)->fetch();
+	}
+	
+	public function courseUpdate($id,$data){
+		$this->database->update('course', $data)->where('id=%i',$id)->execute();
 	}
 }

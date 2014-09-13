@@ -1,0 +1,148 @@
+{* Latte template *}
+{block scripts}
+
+<script>
+	$(function() {
+		$(".datepicker").datepicker();
+	});
+</script>
+{/block}
+{block content}
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+{if isset($infoSubmit)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">2</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar active"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{control selectMaterialForm}
+
+{elseif isset($selectMaterial)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{form setMeasurements}
+		{foreach $id as $row}
+			<fieldset>
+				{var $id=$row->id}
+				{var $width=$row->id.'width'}
+				{var $height=$row->id.'height'}
+				{var $depth=$row->id.'depth'}
+				<legend>{$id}</legend>
+				Šírka: {input $width}<br>
+				Výška: {input $height}<br>
+				Hĺbka: {input $depth}
+			</fieldset>
+		{/foreach}
+		{input submit}
+	{/form}
+	{*foreach $array as $row*}
+	{*input $row->id.width*}
+	{*/foreach*}
+	{*/form*}
+{elseif isset($setMeasurements)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">4</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	<fieldset>
+		<legend>Zakladne informacie</legend>
+		<table>
+			<ul>Firma: {$info['company']}</ul>
+			<ul>Sidlo: {$info['residence']}</ul>
+			<ul>ICO: {$info['ico']}</ul>
+			<ul>Adresa dodania: {$info['address']}</ul>
+			<ul>Datum dodania: {$info['date']}</ul>
+		</table>
+	</fieldset>
+	<fieldset>
+		<table>
+			{foreach $order as $id => $item}
+				<legend>Produkt {$id}</legend>
+
+				<table>
+					<ul>Sirka: {$item['width']}</ul>
+					<ul>Vyska: {$item['height']}</ul>
+					<ul>Hlbka: {$item['depth']}</ul>
+				</table>
+
+			{/foreach}
+		</table>
+	</fieldset>
+	{control sendOrder}
+{else}
+	<div class="step-progress">
+		<div class="circle active">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">2</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{control setInfoForm}
+{/if}

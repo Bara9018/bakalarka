@@ -141,7 +141,7 @@ header{
     position: absolute;
     right: 100px;
     margin-top: 50px;
-    
+
 }
 
 section h3{
@@ -192,11 +192,88 @@ nav#leftMenu {
 }
 
 section#mainContent {
-	width: 500px;
+	width: 700px;
 	padding-left: 40px;
 	padding-top: 20px;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
 	float: left;
+}
+
+//step-progress step
+
+*, *:after, *:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans";
+}
+
+
+/* Form Progress */
+.step-progress {
+  /*width: 1000px;*/
+  margin: 20px auto;
+  text-align: center;
+}
+.step-progress .circle,
+.step-progress .bar {
+  display: inline-block;
+  background: #fff;
+  width: 40px; height: 40px;
+  border-radius: 40px;
+  border: 1px solid #d5d5da;
+}
+.step-progress .bar {
+  position: relative;
+  width: 80px;
+  height: 6px;
+  top: -33px;
+  margin-left: -5px;
+  margin-right: -5px;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+.step-progress .circle .label {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 32px;
+  margin-top: 3px;
+  color: #b5b5ba;
+  font-size: 17px;
+}
+.step-progress .circle .title {
+  color: #b5b5ba;
+  font-size: 13px;
+  line-height: 30px;
+  margin-left: -5px;
+}
+
+/* Done / Active */
+.step-progress .bar.done,
+.step-progress .circle.done {
+  background: #eee;
+}
+.step-progress .bar.active {
+  background: linear-gradient(to right, #EEE 40%, #FFF 60%);
+}
+.step-progress .circle.done .label {
+  color: #FFF;
+  background: #8bc435;
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+}
+.step-progress .circle.done .title {
+  color: #444;
+}
+.step-progress .circle.active .label {
+  color: #FFF;
+  background: #0c95be;
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+}
+.step-progress .circle.active .title {
+  color: #0c95be;
 }

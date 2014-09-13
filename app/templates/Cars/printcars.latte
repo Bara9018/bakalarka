@@ -1,20 +1,19 @@
 {* Latte template *}
-
 {block content}
 <h3>Zoznam aut</h3>
-<table>
+<table class="table">
 	<tr>
-		<th>Špz</th>
-		<th>Nosnosť</th>
+		<th>Spz</th>
 		<th>Detail</th>
+		<th>Poruchy</th>
 		<th>Edit</th>
 	</tr>
 	{foreach $list as $riadok}
 		<tr>
 			<td>{$riadok->spz}</td>
-			<td>{$riadok->capacity}</td>
-			<td><a href='detail'>Detail</a></td>
-			<td><a href='editCars'>Edit</a></td>
+			<td><a n:href="cars:detail $riadok->spz">Detail</a></td>
+			<td><a n:href="cars:faultdetail $riadok->spz">Poruchy</a></td>
+			<td><a n:href="cars:editcars $riadok->spz">Edit</a></td>
 		</tr>
 	{/foreach}
 </table>

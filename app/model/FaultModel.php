@@ -26,4 +26,12 @@ class FaultModel {
 	public function FaultPrint($spz){
 		return $this->database->select('*')->from('fault')->where('spz = %s', $spz);
 	}
+	
+	public function FaultDetail($id){
+		return $this->database->select('*')->from('fault')->where('id=%i',$id)->fetch();
+	}
+
+		public function FaultUpdate($id,$data){
+		$this->database->update('fault', $data)->where('id=%i',$id)->execute();
+	}
 }

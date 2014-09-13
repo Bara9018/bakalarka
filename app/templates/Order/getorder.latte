@@ -1,0 +1,26 @@
+{* Latte template *}
+
+{block content}
+<h3>Zoznam objednavok</h3>
+<table class="table">
+	<tr>
+		<th>Id</th>
+		<th>Company</th>
+		<th>Residence</th>
+		<th>ICO</th>
+		<th>Address</th>
+		<th>Detail</th>
+		<th>Naplanovat</th>
+	</tr>
+	{foreach $newModel as $riadok}
+		<tr>
+			<td>{$riadok->id}</td>
+			<td>{$riadok->company}</td>
+			<td>{$riadok->residence}</td>
+			<td>{$riadok->ico}</td>
+			<td>{$riadok->address}</td>
+			<td><a n:href="order:getdetailorder $riadok->id">Detail</a></td>
+			<td><a n:href="transport:order $riadok->id">Naplanovat</a></td>
+		</tr>
+	{/foreach}
+</table>

@@ -1,9 +1,13 @@
 <ul class="nav nav-pills nav-stacked">
 	{foreach $config['groups'] as $group}
+		{if $user->isAllowed($group['target'].":default")}
 		{ifCurrent $group['target'].":*"}
 		{foreach $group['items'] as $item}
+			{if $user->isAllowed($group['target'].":".$item['target'])}
 			<li{ifCurrent $group['target'].":".$item['target']} class="active"{/ifCurrent}><a href="{$presenter->link($group['target'].":".$item['target'])}">{$item['text']}</a></li>
+			{/if}
 		{/foreach}
 		{/ifCurrent}
+		{/if}
   {/foreach}
 </ul>

@@ -1,19 +1,14 @@
 {* Latte template *}
 
 {block content}
-	<table class="table">
-		<tr>
-			<th>Názov</th>
-			<th>Detail</th>
-		</tr>
-		{foreach $list as $riadok}
-		<tr>
-			<td>{$riadok->name}</td>
-			<td><a n:href="#">Detail</a></td>
-		</tr>
-		{/foreach}
-	</table>
-
-
-
-
+<h3>Detail skolenia</h3>
+<table class="table">
+	<tr>
+		<th>Nazov</th>
+		<th>Edit</th>
+	</tr>
+	<tr>
+		<td>{$list->name}</td>
+		<td><a n:href="course:editcourse $list->id">Edit</a></td>
+	</tr>
+</table>

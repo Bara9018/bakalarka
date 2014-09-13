@@ -44,3 +44,7 @@ services:
 		class: \FaultModel
 	CourseModel:
 		class: \CourseModel
+	EmployeeModel:
+		class: \EmployeeModel
+	OrderModel:
+		class: \OrderModel

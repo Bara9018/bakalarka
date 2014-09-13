@@ -35,6 +35,7 @@ class MaterialPresenter extends SecurePresenter {
 			'description' => null,
 			'weight' => null,
 			'created' => FALSE,
+			'offer'=> NULL,
 		);
 
 		if (is_object($this->list)) {
@@ -46,6 +47,7 @@ class MaterialPresenter extends SecurePresenter {
 				'description' => $this->list->description,
 				'weight' => $this->list->weight,
 				'created' => TRUE,
+				'offer'=>  $this->list->offer,
 			);
 		}
 
@@ -55,6 +57,7 @@ class MaterialPresenter extends SecurePresenter {
 		$form->addText('section', 'Sekcia')->setDefaultValue($preparedData['section']);
 		$form->addText('description', 'Popis')->setDefaultValue($preparedData['description']);
 		$form->addText('weight', 'Váha')->setDefaultValue($preparedData['weight']);
+		$form->addCheckbox('offer','Pridat do ponuky');
 		$form->addHidden('created',$preparedData['created']);
 
 		$form->addSubmit('submit', 'Uložiť');
@@ -73,6 +76,7 @@ class MaterialPresenter extends SecurePresenter {
 			'section' => $values->section,
 			'description' => $values->description,
 			'weight' => $values->weight,
+			'offer'=>$values->offer,
 		);
 
 		try {
@@ -80,7 +84,7 @@ class MaterialPresenter extends SecurePresenter {
 			if ($values->created == FALSE) {
 				$newMaterial = $materialModel->addMaterial($material);
 			}else{
-				$newMaterial = $materialModel->MaterialUpdate($values->id,$material);
+				$newMaterial = $materialModel->materialUpdate($values->id,$material);
 			}
 		} catch (Exception $e) {
 			$this->flashMessage($e->getMessage());
@@ -91,19 +95,19 @@ class MaterialPresenter extends SecurePresenter {
 
 	public function renderPrintmaterial() {
 		$materialModel = $this->context->MaterialModel; /* @var $materialModel \MaterialModel */
-		$list = $materialModel->MaterialPrint();
+		$list = $materialModel->materialPrint();
 		$this->template->list = $list;
 	}
 
 	public function renderDetail($id) {
 		$materialModel = $this->context->MaterialModel; /* @var $materialModel \MaterialModel */
-		$list = $materialModel->DetailPrint($id);
+		$list = $materialModel->detailPrint($id);
 		$this->template->list = $list;
 	}
 
 	public function actionEdit($id) {
 		$materialModel = $this->context->MaterialModel;  /* @var $materialModel \Material */
-		$list = $materialModel->DetailPrint($id);
+		$list = $materialModel->detailPrint($id);
 		if (!is_object($list)) {
 			$this->flashMessage('Daný parameter neexistuje');
 			$this->redirect('Material');

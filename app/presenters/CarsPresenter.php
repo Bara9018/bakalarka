@@ -19,6 +19,7 @@ use Nette,
 class CarsPresenter extends SecurePresenter {
 
 	private $list;
+	private $listFault;
 
 	protected function createComponentCarsForm() {
 		$form = new Nette\Application\UI\Form();
@@ -45,7 +46,7 @@ class CarsPresenter extends SecurePresenter {
 		$form->addText('years', 'Years')->setDefaultValue($preparedData['years']);
 		$form->addText('capacity', 'Nosnosť')->setDefaultValue($preparedData['capacity']);
 		$form->addText('fuel', 'Palivo')->setDefaultValue($preparedData['fuel']);
-		$form->addHidden('created',$preparedData['created']);
+		$form->addHidden('created', $preparedData['created']);
 
 		$form->addSubmit('submit', 'Uložiť');
 
@@ -68,7 +69,7 @@ class CarsPresenter extends SecurePresenter {
 			if ($values->created == FALSE) {
 				$newCar = $carsModel->addCar($cars);
 			} else {
-				$newCar=$carsModel->CarsUpdate($values->spz, $cars);
+				$newCar = $carsModel->CarsUpdate($values->spz, $cars);
 			}
 		} catch (Exception $e) {
 			$this->flashMessage($e->getMessage());
@@ -85,18 +86,43 @@ class CarsPresenter extends SecurePresenter {
 
 	public function renderDetail($spz) {
 		$carsModel = $this->context->CarsModel; /* @var $carsModel \CarsModel */
-		$list = $carsModel->CarsPrint($spz);
+		$list = $carsModel->DetailPrint($spz);
 		$this->template->list = $list;
 	}
 
 	protected function createComponentAddFaultForm() {
 		$form = new Nette\Application\UI\Form();
 
-		$form->addText('spz', 'Spz');
-		$form->addText('description', 'Popis');
-		$form->addText('parts', 'Náhradné diely');
-		$form->addText('service', 'Servis');
-		$form->addText('sum', 'Suma');
+		$preparedData = array(
+			'spz' => NULL,
+			'description' => NULL,
+			'parts' => NULL,
+			'service' => NULL,
+			'sum' => NULL,
+			'id'=>NULL,
+			'created' => FALSE,
+		);
+
+		if (is_object($this->listFault)) {
+			$preparedData = array(
+				'spz' => $this->listFault->spz,
+				'description' => $this->listFault->description,
+				'parts' => $this->listFault->parts,
+				'service' => $this->listFault->service,
+				'sum' => $this->listFault->sum,
+				'id'=>  $this->listFault->id,
+				'created' => TRUE,
+			);
+		}
+
+		$form->addHidden('id', 'id')->setDefaultValue($preparedData['id']);
+		$form->addText('spz', 'Spz')->setDefaultValue($preparedData['spz']);
+		$form->addText('description', 'Popis')->setDefaultValue($preparedData['description']);
+		$form->addText('parts', 'Náhradné diely')->setDefaultValue($preparedData['parts']);
+		$form->addText('service', 'Servis')->setDefaultValue($preparedData['service']);
+		$form->addText('sum', 'Suma')->setDefaultValue($preparedData['sum']);
+		$form->addHidden('created', $preparedData['created']);
+
 		$form->addSubmit('submit', 'Uložiť');
 
 		$form->onSuccess[] = $this->addFaultSucceeded;
@@ -107,6 +133,7 @@ class CarsPresenter extends SecurePresenter {
 		$values = $form->getValues();
 
 		$fault = array(
+			'id'=>$values->id,
 			'spz' => $values->spz,
 			'description' => $values->description,
 			'parts' => $values->parts,
@@ -116,12 +143,16 @@ class CarsPresenter extends SecurePresenter {
 
 		try {
 			$faultModel = $this->context->FaultModel; /* @var $faultModel \FaultModel */
-			$newFault = $faultModel->addfault($fault);
+			if ($values->created == FALSE) {
+				$newFault = $faultModel->addfault($fault);
+			}else{
+				$newFault=$faultModel->FaultUpdate($values->id, $fault);
+			}
 		} catch (Exception $e) {
 			$this->flashMessage($e->getMessage());
 		}
 //		$this->flashMessage('OK');
-		$this->redirect('Cars:detail');
+		$this->redirect('Cars:');
 	}
 
 	public function renderFaultDetail($spz) {
@@ -138,6 +169,16 @@ class CarsPresenter extends SecurePresenter {
 			$this->redirect('Cars:');
 		}
 		$this->list = $list;
+	}
+
+	public function actionEditFault($id) {
+		$faultModel = $this->context->FaultModel;  /* @var $faultModel \FaultModel */
+		$list = $faultModel->FaultDetail($id);
+		if (!is_object($list)) {
+			$this->flashMessage('Dany parameter neexistuje');
+			$this->redirect('Cars:');
+		}
+		$this->listFault = $list;
 	}
 
 }

@@ -1,0 +1,21 @@
+{* Latte template *}
+
+{block content}
+<h3>Zoznam zamestnancov</h3>
+	<table class="table">
+		<tr>
+			<th>Meno</th>
+			<th>Priezvisko</th>
+			<th>Email</th>
+			<th>Rola</th>
+		</tr>
+		{foreach $list as $riadok}
+			<tr>
+				<td>{$riadok->firstname}</td>
+				<td>{$riadok->lastname}</td>
+				<td>{$riadok->email}</td>
+				<td>{$riadok->role}</td>
+				<td><a n:href="material:detail $riadok->id">Detail</a></td>
+			</tr>
+		{/foreach}
+	</table>

@@ -1,0 +1,43 @@
+{* Latte template *}
+
+{block content}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+{*if isset($infoSubmit)*}
+	<div class="step-progress">
+		<div class="circle active">
+			<span class="label">1</span>
+			<span class="title">Detail</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">2</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar active"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+<h3>Detail</h3>
+
+	<fieldset>
+		<table>
+			{foreach $newModel as $item}
+				
+				<legend>{$item['id']}</legend>
+				<table>
+					<ul>Nazov: {$item['name']}</ul>
+					<ul>Sirka: {$item['width']}</ul>
+					<ul>Vyska: {$item['height']}</ul>
+					<ul>Hlbka: {$item['depth']}</ul>
+				</table>
+
+			{/foreach}
+		</table>
+	</fieldset>
