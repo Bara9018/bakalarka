@@ -1,0 +1,75 @@
+parameters:
+  menu:
+    basic:
+      name: "Hello world web"   #název vašeho webu, používán v některých layoutech
+      divider: "/"   # používán v drobečkové navigaci
+    groups:   #seskupení odkazů (většinou jeden presenter)
+      0:   #pozice v menu
+        target: "Material"   #odkazuje na HelloPresenter
+        text: "Material"   #text odkazu v menu
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať material"   #text odkazu
+          1:
+            target: "printmaterial"
+            text: "Zoznam materialu"
+      1:
+        target: "Cars"
+        text: "Vozidla"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať vozidlo"   #text odkazu
+          1:
+            target: "printcars"
+            text: "Zoznam vozidiel"
+      2:
+        target: "Course"
+        text: "Školenia"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať školenie"   #text odkazu
+          1:
+            target: "getcourse"
+            text: "Zoznam školení"
+      3:
+        target: "Employee"
+        text: "Zamestnanci"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "add"   #odkazuje na Hello:default
+            text: "Pridať zamestnanca"   #text odkazu
+          1:   #pozice v menu
+            target: "getperson"   #odkazuje na Hello:default
+            text: "Zoznam zamestnancov"   #text odkazu
+          2:   #pozice v menu
+            target: "setInfo"   #odkazuje na Hello:default
+            text: "Informacie"   #text odkazu
+      4:
+        target: "Order"
+        text: "Objednavka"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "ourorder"   #odkazuje na Hello:default
+            text: "Nasa ponuka"   #text odkazu
+          1:   #pozice v menu
+            target: "specialorder"   #odkazuje na Hello:default
+            text: "Specialne poziadavky"   #text odkazu
+          2:   #pozice v menu
+            target: "getorder"   #odkazuje na Hello:default
+            text: "Zoznam objednavok"   #text odkazu
+      5:
+        target: "Transport"
+        text: "Preprava"
+        items:   #sub-odkazy (většinou akce daného presenteru)
+          0:   #pozice v menu
+            target: "order"   #odkazuje na Hello:default
+            text: "Objednavka"   #text odkazu
+
+     
+
+
+
+      

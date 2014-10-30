@@ -54,10 +54,11 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 			));
 		}
 
+		$role = $this->database->select('role')->from('role')->where(array('id' => $row[self::COLUMN_ROLE]))->fetch();
 		$arr = $row->toArray();
 		$arr['test'] = 'test';
 		unset($arr[self::COLUMN_PASSWORD_HASH]);
-		return new Nette\Security\Identity($row[self::COLUMN_ID], $row[self::COLUMN_ROLE], $arr);
+		return new Nette\Security\Identity($row[self::COLUMN_ID], $role->role, $arr);
 	}
 
 

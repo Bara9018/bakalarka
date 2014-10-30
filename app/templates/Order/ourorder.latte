@@ -1,0 +1,180 @@
+{* Latte template *}
+{block scripts}
+
+<script>
+	$(function() {
+		$(".datepickerFrom").datepicker({ dateFormat: 'dd.mm.yy' });
+		$(".datepickerTo").datepicker({ dateFormat: 'dd.mm.yy' });
+	});
+</script>
+{/block}
+{block content}
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+{if isset($infoSubmit)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">2</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar active"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{control selectMaterialForm}
+
+{elseif isset($selectMaterial)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{form setMeasurements}
+		{foreach $id as $row}
+			<fieldset>
+				{var $id=$row->id}
+				{var $quantity=$row->id.'quantity'}
+				{*var $height=$row->id.'height'*}
+				{*var $depth=$row->id.'depth'*}
+				<legend>{$id}</legend>
+				Množstvo: {input $quantity}<br>
+				<!--Výška: {*input $height*}<br>-->
+				<!--Hĺbka: {*input $depth*}-->
+			</fieldset>
+		{/foreach}
+		Dátum prvej dodávky {input start_date}<br>
+		Dátum poslednej dodávky {input end_date}<br>
+		Perióda {input period}<br>
+		{input submit}
+	{/form}
+	{*foreach $array as $row*}
+	{*input $row->id.width*}
+	{*/foreach*}
+	{*/form*}
+{elseif isset($setMeasurements)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">4</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	<fieldset>
+		<legend>Zakladne informacie</legend>
+		<table>
+			<ul>Firma: {$info['company']}</ul>
+			<ul>Adresa: {$info['address']}</ul>
+			<ul>Smerovacie číslo: {$info['zip']}</ul>
+			<ul>ICO: {$info['ico']}</ul>
+			<ul>Kontaktná osoba: {$info['contact_person']}</ul>
+			<!--<ul>Telefónne číslo: {*$info['phone_number']*}</ul>-->
+			<ul>E-mail: {$info['mail']}
+		</table>
+	</fieldset>
+	<fieldset>
+		<table>
+			{foreach $order as $id => $item}
+				<legend>Produkt {$id}</legend>
+
+				<table>
+					<ul>Množstvo: {$item['quantity']}</ul>
+				</table>
+
+			{/foreach}
+		</table>
+	</fieldset>
+	<fieldset>
+		<table>
+			<legend>Údaje</legend>
+			<table>
+				<ul>Perioda: {$order_info['period']}</ul>
+			</table>
+		</table>
+	</fieldset>
+	{control sendOrder}
+{else}
+	<div class="step-progress">
+		<div class="circle active">
+			<span class="label">&#10003;</span>
+			<span class="title">Informácie</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">2</span>
+			<span class="title">Materiál</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Rozmery</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{control setInfoForm}
+	{*form setInfoForm*}
+		<!--<fieldset class="gllpLatlonPicker">-->
+			{*label company/*}
+			{*input company*}
+			{*label zip/*}
+			{*input zip*}
+			{*label ico/*}
+			{*input ico*}
+			{*label address/*}
+			{*input address*}
+			{*label contact_person/*}
+			{*input contact_person*}
+			{*label mail/*}
+			{*input mail*}
+			{*label date/*}
+			{*input date*}
+			{*label submit/*}
+			{*input submit*}
+		<!--</fieldset>-->
+	{*/form*}
+{/if}

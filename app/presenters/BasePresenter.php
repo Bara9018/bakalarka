@@ -19,6 +19,15 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		$this->template->user = $this->getUser();
 	}
 
+	public function createComponentMenu() {
+		$a = $this;
+		return new Nette\Application\UI\Multiplier(function($name) use ($a) {
+			$mmenu = new \MT\UI\Menu();
+			$mmenu->initialize($a->context->parameters['menu'], $a, $name);
+			return $mmenu;
+		});
+	}
+
 	protected function createComponentSignInForm() {
 		$form = new Nette\Application\UI\Form;
 		$form->addText('username', 'Username:')
@@ -35,7 +44,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		$form->onSuccess[] = $this->signInFormSucceeded;
 		return $form;
 	}
-	
 
 	public function signInFormSucceeded($form) {
 		$values = $form->getValues();
@@ -60,19 +68,19 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 
 	protected function createComponentLogOutForm() {
 		$form = new Nette\Application\UI\Form;
-		$form->addSubmit('logout','Odhlasit');
+		$form->addSubmit('logout', 'Odhlasit');
 		$form->onSuccess[] = $this->logOutFormSucceeded;
 		return $form;
 	}
 
-	public function logOutFormSucceeded($form){
-		$values=$form->getValues();
-		try{
+	public function logOutFormSucceeded($form) {
+		$values = $form->getValues();
+		try {
 			$this->getUser()->logout();
-		}  catch (Exception $e) {
+		} catch (Exception $e) {
 			$this->flashMessage($e->getMessage());
 		}
 		$this->redirect('Homepage:');
 	}
-	
+
 }

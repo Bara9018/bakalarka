@@ -1,0 +1,17 @@
+{* Latte template *}
+
+{block content}
+<h3>Detail</h3>
+
+	<fieldset>
+		<table>
+			{foreach $newModel as $item}
+				
+				<legend>{$item['name']}</legend>
+				<table>
+					<ul>Mnozstvo: {$item['quantity']}</ul>
+				</table>
+
+			{/foreach}
+		</table>
+	</fieldset>

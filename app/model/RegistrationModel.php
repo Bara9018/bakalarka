@@ -26,7 +26,10 @@ class RegistrationModel extends \Nette\Object {
 //		$comm->execute();
 		$result = $this->database->insert('users', $data);
 		return $result->execute();
-		
+	}
+	
+	public function edit($id,$data){
+		$this->database->update('users', $data)->where('id = %i',$id)->execute();
 	}
 
 	public function createNickName($first, $last) {

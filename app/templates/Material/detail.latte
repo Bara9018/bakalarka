@@ -1,27 +1,23 @@
 {* Latte template *}
 
 {block content}
-<div id='printTable'>
-	<table>
-		<th>Id</th>
-		<th>Názov</th>
-		<th>Množstvo</th>
-		<th>Sekcia</th>
-		<th>Popis</th>
-		<th>Váha</th>
+	<h3>Detail materiálu</h3>
+	<table class="table">
+		<tr>
+			<th>Id</th>
+			<th>Názov</th>
+			<th>Popis</th>
+			<th>Technické parametre</th>
+			<th>Cena</th>
+			<th>Edit</th>
+		</tr>
+		<tr>
+			<td>{$list->id}</td>
+			<td>{$list->name}</td>
+			<td>{$list->description}</td>
+			<td>{$list->technical_drawing}</td>
+			<td>{$list->price}</td>
+			<td><a n:href="material:edit $list->id">Edit</a></td>
+		</tr>
 	</table>
-</div>
-{foreach $list as $riadok}
-	<div id='printTable'>
-		<table>
-			<tr>
-				<td>{$riadok->id}</td>
-				<td>{$riadok->name}</td>
-				<td>{$riadok->quantity}</td>
-				<td>{$riadok->section}</td>
-				<td>{$riadok->description}</td>
-				<td>{$riadok->weight}</td>
-			</tr>
-		</table>
-	</div>
-{/foreach}
+

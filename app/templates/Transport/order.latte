@@ -1,0 +1,249 @@
+{* Latte template *}
+{block scripts}
+<script src="{$basePath}/www/js/moment.min.js"></script>
+<script src="{$basePath}/www/js/fullcalendar.js"></script>
+<script src="{$basePath}/www/js/jquery-ui.custom.min.js"></script>
+<script>
+
+	$(document).ready(function() {
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			eventLimit: true, // allow "more" link when too many events
+			events: {
+				url: {plink Transport:Event},
+				error: function() {
+					$('#script-warning').show();
+				}
+			},
+			loading: function(bool) {
+				$('#loading').toggle(bool);
+			}
+		});
+
+	});</script>
+	{/block}
+	{block content}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="{$basePath}/www/css/fullcalendar.css"/>
+
+{*if isset($infoSubmit)*}
+{if isset($detailOrder)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Detail</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">2</span>
+			<span class="title">Kalendár</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Trasa</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Preprava</span>
+		</div>
+		<span class="bar active"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	<div id='calendar'></div>
+	{control calendarForm}
+
+{elseif isset($calendar)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Detail</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Kalendár</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">3</span>
+			<span class="title">Trasa</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Preprava</span>
+		</div>
+		<span class="bar active"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{form routeForm}
+		<fieldset onLoad="init()">
+			<table>
+				<legend>Adresa</legend>
+				<table>
+					<!--<ul><strong>Adresa dodania:</strong> {*$newOrder->address*}</ul>-->
+					<ul>Okdiaľ: {input from}</ul>
+					<ul>{input to}</ul>
+					<ul>Cez: {input via}</ul>
+
+					<div style="width:auto; float:left; padding-right:4px" align="right">Celková dĺžka cesty: </div><div id="totalkm" style="width:auto; float:left">-</div>&nbsp;km<br>
+					<!--<ul>Celková dĺžka cesty: </ul>-->
+					<div style="width:auto; float:left; padding-right:4px" align="right">Odhadovaný čistý čas cesty: </div><div id="time" style="width:auto; float:left">-</div><br>
+					<div id="map_canvas" style="width:100%; height:300px"></div>
+					<input type="button" value="Vypočítať cenu cesty" onClick="initialize();"/>
+					<ul>{input submit}</ul>
+				</table>
+			</table>
+		</fieldset>
+	{/form}
+
+{elseif isset($route)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Detail</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Kalendár</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Trasa</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">4</span>
+			<span class="title">Preprava</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	{control employeeTransportForm}
+
+{elseif isset($employee)}
+	<div class="step-progress">
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Detail</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Kalendár</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Trasa</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle done">
+			<span class="label">&#10003;</span>
+			<span class="title">Preprava</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle active">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	<fieldset>
+		<table>
+			{foreach $newModel as $row}
+				<legend>Nazov: {$row->id}</legend>
+				<ul><strong>Množstvo:</strong> {$row->quantity}</ul>
+			{/foreach}
+			
+			<legend>Preprava</legend>
+			<ul>{$carsAray[$cars]}</ul>
+			<ul>{$employeeAray[$employees]}</ul>
+		</table>
+	</fieldset>
+	{control finishForm}
+	
+{else}
+	<div class="step-progress">
+		<div class="circle active">
+			<span class="label">1</span>
+			<span class="title">Detail</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">2</span>
+			<span class="title">Kalendár</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">3</span>
+			<span class="title">Trasa</span>
+		</div>
+		<span class="bar"></span>
+		<div class="circle">
+			<span class="label">4</span>
+			<span class="title">Preprava</span>
+		</div>
+		<span class="bar active"></span>
+		<div class="circle">
+			<span class="label">5</span>
+			<span class="title">Finish</span>
+		</div>
+	</div>
+	<h3>Detail</h3>
+
+	<fieldset>
+		<table>
+			{foreach $newModel as $row}
+				<legend>{$row->id}</legend>
+
+				<ul><strong>Nazov:</strong> {$row->name}</ul>
+				<ul><strong>Množstvo:</strong> {$row->quantity}</ul>
+			{/foreach}
+
+			<legend>Rozmädzie dátumov</legend>
+				<ul><strong>Začiatočny datum:</strong> {$newOrder->start_date|date:'%d.%m.%Y'}</ul>
+				<ul><strong>Koncovy datum:</strong> {$newOrder->end_date|date:'%d.%m.%Y'}</ul>
+				<ul><strong>Perioda:</strong> {$newOrder->period}</ul>
+			
+
+			<legend>Informácie o dodaní</legend>
+			
+				<ul><strong>Počet dodáviek: </strong>{$days}</ul>
+
+				{foreach $total_quantity as $item}
+					<ul><strong>Celkové množstvo materiálu: </strong>{$item}</ul>
+				{/foreach}
+		
+			<!--<legend>Dátumy dodania</legend>-->
+<!--			<table>
+				{*foreach $date_delivery as $row=>$item*}
+					{*$item|date:'%d.%m.%Y'*}
+				{*/foreach*}
+			</table>-->
+<!--			<div id='calendar'></div>-->
+		</table>
+	</fieldset>
+	{control detailForm}
+{/if}

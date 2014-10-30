@@ -1,0 +1,20 @@
+{* Latte template *}
+
+{block content}
+<h3>Zoznam skoleni</h3>
+	<table class="table">
+		<tr>
+			<th>Názov</th>
+			<th>Detail</th>
+		</tr>
+		{foreach $list as $riadok}
+		<tr>
+			<td>{$riadok->name}</td>
+			<td><a n:href="course:detail $riadok->id">Detail</a></td>
+		</tr>
+		{/foreach}
+	</table>
+
+
+
+

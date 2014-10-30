@@ -13,10 +13,12 @@ $configurator->createRobotLoader()
 	->addDirectory(__DIR__)
 	->addDirectory(__DIR__ . '/../vendor/others')
 	->addDirectory(__DIR__ . '/../vendor/dibi')
+	->addDirectory(__DIR__ . '/../vendor/menu')
+	->addDirectory(__DIR__ . '/../vendor/EventCalendar')
 	->register();
 
 $configurator->addConfig(__DIR__ . '/config/config.neon');
-//$configurator->addConfig(__DIR__ . '/config/config.local.neon');
+$configurator->addConfig(__DIR__ . '/config/menu.neon');
 
 $configurator->onCompile[] = function ($configurator, $compiler) {
     $compiler->addExtension('dibi', new DibiNette21Extension());
