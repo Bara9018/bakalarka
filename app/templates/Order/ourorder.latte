@@ -3,7 +3,8 @@
 
 <script>
 	$(function() {
-		$(".datepicker").datepicker();
+		$(".datepickerFrom").datepicker({ dateFormat: 'dd.mm.yy' });
+		$(".datepickerTo").datepicker({ dateFormat: 'dd.mm.yy' });
 	});
 </script>
 {/block}
@@ -60,15 +61,18 @@
 		{foreach $id as $row}
 			<fieldset>
 				{var $id=$row->id}
-				{var $width=$row->id.'width'}
-				{var $height=$row->id.'height'}
-				{var $depth=$row->id.'depth'}
+				{var $quantity=$row->id.'quantity'}
+				{*var $height=$row->id.'height'*}
+				{*var $depth=$row->id.'depth'*}
 				<legend>{$id}</legend>
-				Šírka: {input $width}<br>
-				Výška: {input $height}<br>
-				Hĺbka: {input $depth}
+				Množstvo: {input $quantity}<br>
+				<!--Výška: {*input $height*}<br>-->
+				<!--Hĺbka: {*input $depth*}-->
 			</fieldset>
 		{/foreach}
+		Dátum prvej dodávky {input start_date}<br>
+		Dátum poslednej dodávky {input end_date}<br>
+		Perióda {input period}<br>
 		{input submit}
 	{/form}
 	{*foreach $array as $row*}
@@ -101,10 +105,12 @@
 		<legend>Zakladne informacie</legend>
 		<table>
 			<ul>Firma: {$info['company']}</ul>
-			<ul>Sidlo: {$info['residence']}</ul>
+			<ul>Adresa: {$info['address']}</ul>
+			<ul>Smerovacie číslo: {$info['zip']}</ul>
 			<ul>ICO: {$info['ico']}</ul>
-			<ul>Adresa dodania: {$info['address']}</ul>
-			<ul>Datum dodania: {$info['date']}</ul>
+			<ul>Kontaktná osoba: {$info['contact_person']}</ul>
+			<!--<ul>Telefónne číslo: {*$info['phone_number']*}</ul>-->
+			<ul>E-mail: {$info['mail']}
 		</table>
 	</fieldset>
 	<fieldset>
@@ -113,12 +119,18 @@
 				<legend>Produkt {$id}</legend>
 
 				<table>
-					<ul>Sirka: {$item['width']}</ul>
-					<ul>Vyska: {$item['height']}</ul>
-					<ul>Hlbka: {$item['depth']}</ul>
+					<ul>Množstvo: {$item['quantity']}</ul>
 				</table>
 
 			{/foreach}
+		</table>
+	</fieldset>
+	<fieldset>
+		<table>
+			<legend>Údaje</legend>
+			<table>
+				<ul>Perioda: {$order_info['period']}</ul>
+			</table>
 		</table>
 	</fieldset>
 	{control sendOrder}
@@ -145,4 +157,24 @@
 		</div>
 	</div>
 	{control setInfoForm}
+	{*form setInfoForm*}
+		<!--<fieldset class="gllpLatlonPicker">-->
+			{*label company/*}
+			{*input company*}
+			{*label zip/*}
+			{*input zip*}
+			{*label ico/*}
+			{*input ico*}
+			{*label address/*}
+			{*input address*}
+			{*label contact_person/*}
+			{*input contact_person*}
+			{*label mail/*}
+			{*input mail*}
+			{*label date/*}
+			{*input date*}
+			{*label submit/*}
+			{*input submit*}
+		<!--</fieldset>-->
+	{*/form*}
 {/if}

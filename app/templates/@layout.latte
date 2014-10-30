@@ -14,13 +14,20 @@
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/www/css/screen.css">
 		<link rel="stylesheet" media="print" href="{$basePath}/www/css/print.css">
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/www/js/jquery-ui/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="{$basePath}/www/css/jquery-gmaps-latlon-picker.css"/>
+		
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/base/jquery-ui.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
 		<link rel="shortcut icon" href="{$basePath}/www/favicon.ico">
+		
+		<script src="{$basePath}/www/js/jquery.js"></script>
+		
 		{block head}{/block}
     </head>
 
     <body>
 		<script> document.documentElement.className += ' js'</script>
-			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+		<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
 		<div id="page">
 			<header>
 				<div id="image_logo">
@@ -62,11 +69,37 @@
 				{include content}
 			</section>
 		</div>
-		<script src="{$basePath}/www/js/jquery.js"></script>
 		<script src="{$basePath}/www/js/netteForms.js"></script>
 		<script src="{$basePath}/www/js/main.js"></script>
 		<script src="{$basePath}/www/js/bootstrap.min.js"></script>
 		<script src="{$basePath}/www/js/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBcRxgCX1Q8n4ZMoQy1AqwvrfqjLx3zFyw&sensor=true&language=SK"></script>
+		<script type="text/javascript" src="{$basePath}/www/js/mapa.js"></script>
+	
+	
+		<script>
+			jQuery(function($) {
+				$.datepicker.regional['sk'] = {
+					closeText: 'Zavrieť',
+					prevText: '&#x3c;Predchádzajúci',
+					nextText: 'Nasledujúci&#x3e;',
+					currentText: 'Dnes',
+					monthNames: ['Január', 'Február', 'Marec', 'Apríl', 'Máj', 'Jún',
+						'Júl', 'August', 'September', 'Október', 'November', 'December'],
+					monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Máj', 'Jún',
+						'Júl', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
+					dayNames: ['Nedel\'a', 'Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota'],
+					dayNamesShort: ['Ned', 'Pon', 'Uto', 'Str', 'Štv', 'Pia', 'Sob'],
+					dayNamesMin: ['Ne', 'Po', 'Ut', 'St', 'Št', 'Pia', 'So'],
+					weekHeader: 'Ty',
+					dateFormat: 'dd.mm.yy',
+					firstDay: 1,
+					isRTL: false,
+					showMonthAfterYear: false,
+					yearSuffix: ''};
+				$.datepicker.setDefaults($.datepicker.regional['sk']);
+			});
+		</script>
 		{block scripts}
 		{/block}
     </body>

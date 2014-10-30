@@ -44,6 +44,11 @@ class Authenticator extends \Nette\Security\Permission {
 		$this->addResource('Order:getdetailorder');
 		$this->addResource('Transport:default');
 		$this->addResource('Transport:order');
+		$this->addResource('Transport:event');
+		$this->addResource('Transport:addEvents');
+		$this->addResource('Transport:updateEvent');
+		$this->addResource('Transport:email');
+		$this->addResource('Homepage:default');
 		
 		$this->allow('admin','Sign:registration');
 		$this->allow('admin','Material:default');
@@ -70,6 +75,10 @@ class Authenticator extends \Nette\Security\Permission {
 		$this->allow('customer','Order:default');
 		$this->allow('customer','Order:ourorder');
 		$this->allow('customer','Order:specialorder');
+		$this->allow('guest','Transport:event');
+		$this->allow('guest','Transport:addEvents');
+		$this->allow('guest','Transport:updateEvent');
+		$this->allow('guest','Homepage:default');
 		$this->allow('expedient','Material:printmaterial');
 		$this->allow('expedient','Material:default');
 		$this->allow('expedient','Material:detail');
@@ -80,5 +89,6 @@ class Authenticator extends \Nette\Security\Permission {
 		$this->allow('expedient','Order:getdetailorder');
 		$this->allow('expedient','Transport:default');
 		$this->allow('expedient','Transport:order');
+		$this->allow('expedient','Transport:email');
 	}
 }

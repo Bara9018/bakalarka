@@ -7,14 +7,18 @@
 		<tr>
 			<th>Id</th>
 			<th>Názov</th>
-			<th>Množstvo</th>
+			<th>Popis</th>
+			<th>Cena</th>
+			<th>Technické parametre</th>
 			<th>Detail</th>
 		</tr>
 		{foreach $list as $riadok}
 			<tr>
 				<td>{$riadok->id}</td>
 				<td>{$riadok->name}</td>
-				<td>{$riadok->quantity}</td>
+				<td>{$riadok->description}</td>
+				<td>{$riadok->price}</td>
+				<td>{$riadok->technical_drawing}</td>
 				<td><a n:href="material:detail $riadok->id">Detail</a></td>
 			</tr>
 		{/foreach}

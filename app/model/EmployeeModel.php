@@ -21,4 +21,10 @@ class EmployeeModel {
 	public function getPeople(){
 		return $this->database->select('*')->from('users');
 	}
+	
+	public function getEmployee(){
+		$role=3;
+		return $this->database->select('*')->from('users')->where('role = %i',  $role);
+	}
+
 }

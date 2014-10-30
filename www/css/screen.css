@@ -277,3 +277,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 .step-progress .circle.active .title {
   color: #0c95be;
 }
+
+#map{
+	position: initial !important;	
+}
+
+.gm-style{
+/*	top: 350px !important;
+	width: 40% !important;
+	height: 50% !important;
+	left: 450px !important;*/
+	position: unset !important;
+}

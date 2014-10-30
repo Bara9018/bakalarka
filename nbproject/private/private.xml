@@ -4,13 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/bakalarka/app/model/OrderModel.php</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Transport/order.latte</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/@layout.latte</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/TransportPresenter.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/HomepagePresenter.php</file>
             <file>file:/C:/xampp/htdocs/bakalarka/app/model/Authenticator.php</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/www/css/screen.css</file>
-            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Order/ourorder.latte</file>
             <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/OrderPresenter.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Course/default.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Transport/order.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/model/TransportModel.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/presenters/TransportPresenter.php</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Material/default.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Order/default.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Employee/default.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Transport/email.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/config/menu.neon</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/app/templates/Cars/default.latte</file>
+            <file>file:/C:/xampp/htdocs/bakalarka/vendor/menu/menu.top.latte</file>
         </group>
     </open-files>
 </project-private>

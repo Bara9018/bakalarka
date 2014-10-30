@@ -35,11 +35,19 @@ class OrderModel {
 	public function getOrder() {
 		return $this->database->select('*')->from('order_info');
 	}
+	
+	public function getOrderId($id){
+		return $this->database->select('*')->from('order_info')->where('id =%i',$id)->fetch();
+	}
 
 	public function getDetailOrder($id) {
 		return $this->database->select('*')->from('order_material')
 				->join('material')->on('order_material.material_id=material.id')
 				->where('order_id=%i', $id);
 	}
-
+	
+	public function updateOrder($data,$id){
+		$this->database->update('order_info', $data)->where('id=%i',$id)->execute();
+	}
+	
 }

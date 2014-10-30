@@ -30,10 +30,9 @@ class MaterialPresenter extends SecurePresenter {
 		$preparedData = array(
 			'id' => NULL,
 			'name' => NULL,
-			'quantity' => null,
-			'section' => null,
 			'description' => null,
-			'weight' => null,
+			'technical_drawing'=>NULL,
+			'price'=>NULL,
 			'created' => FALSE,
 			'offer'=> NULL,
 		);
@@ -42,10 +41,9 @@ class MaterialPresenter extends SecurePresenter {
 			$preparedData = array(
 				'id' => $this->list->id,
 				'name' => $this->list->name,
-				'quantity' => $this->list->quantity,
-				'section' => $this->list->section,
 				'description' => $this->list->description,
-				'weight' => $this->list->weight,
+				'technical_drawing'=> $this->list->technical_drawing,
+				'price'=>  $this->list->price,
 				'created' => TRUE,
 				'offer'=>  $this->list->offer,
 			);
@@ -53,10 +51,9 @@ class MaterialPresenter extends SecurePresenter {
 
 		$form->addText('id', 'id')->setDefaultValue($preparedData['id']);
 		$form->addText('name', 'Nazov')->setDefaultValue($preparedData['name']);
-		$form->addText('quantity', 'Množstvo')->setDefaultValue($preparedData['quantity']);
-		$form->addText('section', 'Sekcia')->setDefaultValue($preparedData['section']);
 		$form->addText('description', 'Popis')->setDefaultValue($preparedData['description']);
-		$form->addText('weight', 'Váha')->setDefaultValue($preparedData['weight']);
+		$form->addText('technical_drawing','Technicke parametre')->setDefaultValue($preparedData['technical_drawing']);
+		$form->addText('price', 'Cena')->setDefaultValue($preparedData['price']);
 		$form->addCheckbox('offer','Pridat do ponuky');
 		$form->addHidden('created',$preparedData['created']);
 
@@ -72,10 +69,9 @@ class MaterialPresenter extends SecurePresenter {
 		$material = array(
 			'id' => $values->id,
 			'name' => $values->name,
-			'quantity' => $values->quantity,
-			'section' => $values->section,
 			'description' => $values->description,
-			'weight' => $values->weight,
+			'technical_drawing'=>$values->technical_drawing,
+			'price'=>$values->price,
 			'offer'=>$values->offer,
 		);
 

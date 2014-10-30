@@ -1,0 +1,14 @@
+
+		<p>Dobrý deň,</p>
+
+		<p>
+			{foreach $newModel as $row=>$item}
+			<legend><strong>Id materiálu: {$row}</strong></legend>
+				<ul><strong>Množstvo:</strong> {$item}</ul>
+			{/foreach}
+			
+			<legend><strong>Dátumy dodania:</strong></legend>
+			{foreach $date_delivery as $item}
+				<ul>{$item}</ul>
+			{/foreach}
+		</p>

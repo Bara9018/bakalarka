@@ -6,19 +6,17 @@
 		<tr>
 			<th>Id</th>
 			<th>Názov</th>
-			<th>Množstvo</th>
-			<th>Sekcia</th>
 			<th>Popis</th>
-			<th>Váha</th>
+			<th>Technické parametre</th>
+			<th>Cena</th>
 			<th>Edit</th>
 		</tr>
 		<tr>
 			<td>{$list->id}</td>
 			<td>{$list->name}</td>
-			<td>{$list->quantity}</td>
-			<td>{$list->section}</td>
 			<td>{$list->description}</td>
-			<td>{$list->weight}</td>
+			<td>{$list->technical_drawing}</td>
+			<td>{$list->price}</td>
 			<td><a n:href="material:edit $list->id">Edit</a></td>
 		</tr>
 	</table>
